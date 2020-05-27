@@ -1,0 +1,60 @@
+20304
+-9758
+3.141592
+-0.0000007
+75.
+.9277
+-.3984
+6.674e-11
+6.22e13
+.877e84
+17.e2
+17.e-2
+True
+False
+""
+"A"
+"ZYXWVUTSRQPONMLKJIHGFEDCBA"
+''
+'X'
+'Wello Horld'
+"ECHO         echo"
+"!@#$%^&*()"
+'0987654321'
+[]
+['f']
+[4, 3, 2, 1]
+['zzzz', 817, "ARG!", 100.012, 17.0e-4]
+True orelse False
+False orelse False
+False andalso True
+True andalso True
+not False
+not True
+"a" < 'z'
+17 <= 16
+"abc" == 'abc'
+10.0 <> 10
+11.9 >= 11.9
+11.9 > 11.9
+'a'::[]
+17::[1, 2, 3, 4]
+'z' in "abzcdef"
+5 in [1, 2, 3, 4]
+5 - 3
+17.0 + 10.0
+"Hello" + " " + "World"
+[1, 2, 3] + ["a", 'b', "c"]
+17 mod 6
+17 div 6
+17 / 6
+17.0 / 6.0
+10 * 10
+10.0 * 10.0
+10 * 10.0
+2 ** 10
+[1, 2, 3, 4][2]
+(1, 2, 3, 4)
+#3(4, 3, 2, 1)
+("abc")
+(2 + 5)

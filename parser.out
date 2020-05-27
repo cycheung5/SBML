@@ -1,0 +1,3097 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> prop
+Rule 1     prop -> MINUS prop
+Rule 2     prop -> NEGATION boolean
+Rule 3     prop -> boolean CONJUNCTION boolean
+Rule 4     prop -> boolean DISJUNCTION boolean
+Rule 5     prop -> prop CON prop
+Rule 6     prop -> prop IN prop
+Rule 7     prop -> prop PLUS prop
+Rule 8     prop -> prop MINUS prop
+Rule 9     prop -> prop MULTIPLY prop
+Rule 10    prop -> prop DIVIDE prop
+Rule 11    prop -> prop INTEGER_DIV prop
+Rule 12    prop -> prop MOD prop
+Rule 13    prop -> prop EXPONENT prop
+Rule 14    prop -> prop LESS prop
+Rule 15    prop -> prop LESS_EQUAL prop
+Rule 16    prop -> prop GREATER prop
+Rule 17    prop -> prop GREATER_EQUAL prop
+Rule 18    prop -> prop EQUALS prop
+Rule 19    prop -> prop NOT_EQUAL prop
+Rule 20    prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+Rule 21    prop -> prop index
+Rule 22    index -> LEFT_BRACKET prop RIGHT_BRACKET
+Rule 23    prop -> list
+Rule 24    list -> LEFT_BRACKET expression RIGHT_BRACKET
+Rule 25    list -> LEFT_BRACKET RIGHT_BRACKET
+Rule 26    expression -> value COMMA expression
+Rule 27    expression -> value
+Rule 28    value -> prop
+Rule 29    prop -> TUPLE_IND Number prop
+Rule 30    prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+Rule 31    express -> element COMMA expression
+Rule 32    express -> element COMMA
+Rule 33    element -> prop
+Rule 34    prop -> STRING
+Rule 35    prop -> Number
+Rule 36    Number -> REAL
+Rule 37    Number -> INTEGER
+Rule 38    prop -> boolean
+Rule 39    boolean -> TRUE
+Rule 40    boolean -> FALSE
+
+Terminals, with rules where they appear
+
+COMMA                : 26 31 32
+CON                  : 5
+CONJUNCTION          : 3
+DISJUNCTION          : 4
+DIVIDE               : 10
+EQUALS               : 18
+EXPONENT             : 13
+FALSE                : 40
+GREATER              : 16
+GREATER_EQUAL        : 17
+IN                   : 6
+INTEGER              : 37
+INTEGER_DIV          : 11
+LEFT_BRACKET         : 22 24 25
+LEFT_PARENTHESIS     : 20 30
+LESS                 : 14
+LESS_EQUAL           : 15
+MINUS                : 1 8
+MOD                  : 12
+MULTIPLY             : 9
+NEGATION             : 2
+NOT_EQUAL            : 19
+PLUS                 : 7
+REAL                 : 36
+RIGHT_BRACKET        : 22 24 25
+RIGHT_PARENTHESIS    : 20 30
+STRING               : 34
+TRUE                 : 39
+TUPLE_IND            : 29
+error                : 
+
+Nonterminals, with rules where they appear
+
+Number               : 29 35
+boolean              : 2 3 3 4 4 38
+element              : 31 32
+express              : 30
+expression           : 24 26 31
+index                : 21
+list                 : 23
+prop                 : 1 5 5 6 6 7 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16 17 17 18 18 19 19 20 21 22 28 29 33 0
+value                : 26 27
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    prop                           shift and go to state 1
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 1
+
+    (0) S' -> prop .
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    CON             shift and go to state 15
+    IN              shift and go to state 16
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    MULTIPLY        shift and go to state 19
+    DIVIDE          shift and go to state 20
+    INTEGER_DIV     shift and go to state 21
+    MOD             shift and go to state 22
+    EXPONENT        shift and go to state 23
+    LESS            shift and go to state 24
+    LESS_EQUAL      shift and go to state 25
+    GREATER         shift and go to state 26
+    GREATER_EQUAL   shift and go to state 27
+    EQUALS          shift and go to state 28
+    NOT_EQUAL       shift and go to state 29
+    LEFT_BRACKET    shift and go to state 31
+
+    index                          shift and go to state 30
+
+state 2
+
+    (1) prop -> MINUS . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    prop                           shift and go to state 32
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 3
+
+    (2) prop -> NEGATION . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+
+    boolean                        shift and go to state 33
+
+state 4
+
+    (3) prop -> boolean . CONJUNCTION boolean
+    (4) prop -> boolean . DISJUNCTION boolean
+    (38) prop -> boolean .
+
+    CONJUNCTION     shift and go to state 34
+    DISJUNCTION     shift and go to state 35
+    CON             reduce using rule 38 (prop -> boolean .)
+    IN              reduce using rule 38 (prop -> boolean .)
+    PLUS            reduce using rule 38 (prop -> boolean .)
+    MINUS           reduce using rule 38 (prop -> boolean .)
+    MULTIPLY        reduce using rule 38 (prop -> boolean .)
+    DIVIDE          reduce using rule 38 (prop -> boolean .)
+    INTEGER_DIV     reduce using rule 38 (prop -> boolean .)
+    MOD             reduce using rule 38 (prop -> boolean .)
+    EXPONENT        reduce using rule 38 (prop -> boolean .)
+    LESS            reduce using rule 38 (prop -> boolean .)
+    LESS_EQUAL      reduce using rule 38 (prop -> boolean .)
+    GREATER         reduce using rule 38 (prop -> boolean .)
+    GREATER_EQUAL   reduce using rule 38 (prop -> boolean .)
+    EQUALS          reduce using rule 38 (prop -> boolean .)
+    NOT_EQUAL       reduce using rule 38 (prop -> boolean .)
+    LEFT_BRACKET    reduce using rule 38 (prop -> boolean .)
+    $end            reduce using rule 38 (prop -> boolean .)
+    RIGHT_PARENTHESIS reduce using rule 38 (prop -> boolean .)
+    COMMA           reduce using rule 38 (prop -> boolean .)
+    RIGHT_BRACKET   reduce using rule 38 (prop -> boolean .)
+
+
+state 5
+
+    (20) prop -> LEFT_PARENTHESIS . prop RIGHT_PARENTHESIS
+    (30) prop -> LEFT_PARENTHESIS . express RIGHT_PARENTHESIS
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (31) express -> . element COMMA expression
+    (32) express -> . element COMMA
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+    (33) element -> . prop
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    prop                           shift and go to state 36
+    express                        shift and go to state 37
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+    element                        shift and go to state 38
+
+state 6
+
+    (23) prop -> list .
+
+    CON             reduce using rule 23 (prop -> list .)
+    IN              reduce using rule 23 (prop -> list .)
+    PLUS            reduce using rule 23 (prop -> list .)
+    MINUS           reduce using rule 23 (prop -> list .)
+    MULTIPLY        reduce using rule 23 (prop -> list .)
+    DIVIDE          reduce using rule 23 (prop -> list .)
+    INTEGER_DIV     reduce using rule 23 (prop -> list .)
+    MOD             reduce using rule 23 (prop -> list .)
+    EXPONENT        reduce using rule 23 (prop -> list .)
+    LESS            reduce using rule 23 (prop -> list .)
+    LESS_EQUAL      reduce using rule 23 (prop -> list .)
+    GREATER         reduce using rule 23 (prop -> list .)
+    GREATER_EQUAL   reduce using rule 23 (prop -> list .)
+    EQUALS          reduce using rule 23 (prop -> list .)
+    NOT_EQUAL       reduce using rule 23 (prop -> list .)
+    LEFT_BRACKET    reduce using rule 23 (prop -> list .)
+    $end            reduce using rule 23 (prop -> list .)
+    RIGHT_PARENTHESIS reduce using rule 23 (prop -> list .)
+    COMMA           reduce using rule 23 (prop -> list .)
+    RIGHT_BRACKET   reduce using rule 23 (prop -> list .)
+
+
+state 7
+
+    (29) prop -> TUPLE_IND . Number prop
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    Number                         shift and go to state 39
+
+state 8
+
+    (35) prop -> Number .
+
+    CON             reduce using rule 35 (prop -> Number .)
+    IN              reduce using rule 35 (prop -> Number .)
+    PLUS            reduce using rule 35 (prop -> Number .)
+    MINUS           reduce using rule 35 (prop -> Number .)
+    MULTIPLY        reduce using rule 35 (prop -> Number .)
+    DIVIDE          reduce using rule 35 (prop -> Number .)
+    INTEGER_DIV     reduce using rule 35 (prop -> Number .)
+    MOD             reduce using rule 35 (prop -> Number .)
+    EXPONENT        reduce using rule 35 (prop -> Number .)
+    LESS            reduce using rule 35 (prop -> Number .)
+    LESS_EQUAL      reduce using rule 35 (prop -> Number .)
+    GREATER         reduce using rule 35 (prop -> Number .)
+    GREATER_EQUAL   reduce using rule 35 (prop -> Number .)
+    EQUALS          reduce using rule 35 (prop -> Number .)
+    NOT_EQUAL       reduce using rule 35 (prop -> Number .)
+    LEFT_BRACKET    reduce using rule 35 (prop -> Number .)
+    $end            reduce using rule 35 (prop -> Number .)
+    RIGHT_PARENTHESIS reduce using rule 35 (prop -> Number .)
+    COMMA           reduce using rule 35 (prop -> Number .)
+    RIGHT_BRACKET   reduce using rule 35 (prop -> Number .)
+
+
+state 9
+
+    (34) prop -> STRING .
+
+    CON             reduce using rule 34 (prop -> STRING .)
+    IN              reduce using rule 34 (prop -> STRING .)
+    PLUS            reduce using rule 34 (prop -> STRING .)
+    MINUS           reduce using rule 34 (prop -> STRING .)
+    MULTIPLY        reduce using rule 34 (prop -> STRING .)
+    DIVIDE          reduce using rule 34 (prop -> STRING .)
+    INTEGER_DIV     reduce using rule 34 (prop -> STRING .)
+    MOD             reduce using rule 34 (prop -> STRING .)
+    EXPONENT        reduce using rule 34 (prop -> STRING .)
+    LESS            reduce using rule 34 (prop -> STRING .)
+    LESS_EQUAL      reduce using rule 34 (prop -> STRING .)
+    GREATER         reduce using rule 34 (prop -> STRING .)
+    GREATER_EQUAL   reduce using rule 34 (prop -> STRING .)
+    EQUALS          reduce using rule 34 (prop -> STRING .)
+    NOT_EQUAL       reduce using rule 34 (prop -> STRING .)
+    LEFT_BRACKET    reduce using rule 34 (prop -> STRING .)
+    $end            reduce using rule 34 (prop -> STRING .)
+    RIGHT_PARENTHESIS reduce using rule 34 (prop -> STRING .)
+    COMMA           reduce using rule 34 (prop -> STRING .)
+    RIGHT_BRACKET   reduce using rule 34 (prop -> STRING .)
+
+
+state 10
+
+    (39) boolean -> TRUE .
+
+    CONJUNCTION     reduce using rule 39 (boolean -> TRUE .)
+    DISJUNCTION     reduce using rule 39 (boolean -> TRUE .)
+    CON             reduce using rule 39 (boolean -> TRUE .)
+    IN              reduce using rule 39 (boolean -> TRUE .)
+    PLUS            reduce using rule 39 (boolean -> TRUE .)
+    MINUS           reduce using rule 39 (boolean -> TRUE .)
+    MULTIPLY        reduce using rule 39 (boolean -> TRUE .)
+    DIVIDE          reduce using rule 39 (boolean -> TRUE .)
+    INTEGER_DIV     reduce using rule 39 (boolean -> TRUE .)
+    MOD             reduce using rule 39 (boolean -> TRUE .)
+    EXPONENT        reduce using rule 39 (boolean -> TRUE .)
+    LESS            reduce using rule 39 (boolean -> TRUE .)
+    LESS_EQUAL      reduce using rule 39 (boolean -> TRUE .)
+    GREATER         reduce using rule 39 (boolean -> TRUE .)
+    GREATER_EQUAL   reduce using rule 39 (boolean -> TRUE .)
+    EQUALS          reduce using rule 39 (boolean -> TRUE .)
+    NOT_EQUAL       reduce using rule 39 (boolean -> TRUE .)
+    LEFT_BRACKET    reduce using rule 39 (boolean -> TRUE .)
+    $end            reduce using rule 39 (boolean -> TRUE .)
+    RIGHT_PARENTHESIS reduce using rule 39 (boolean -> TRUE .)
+    COMMA           reduce using rule 39 (boolean -> TRUE .)
+    RIGHT_BRACKET   reduce using rule 39 (boolean -> TRUE .)
+
+
+state 11
+
+    (40) boolean -> FALSE .
+
+    CONJUNCTION     reduce using rule 40 (boolean -> FALSE .)
+    DISJUNCTION     reduce using rule 40 (boolean -> FALSE .)
+    CON             reduce using rule 40 (boolean -> FALSE .)
+    IN              reduce using rule 40 (boolean -> FALSE .)
+    PLUS            reduce using rule 40 (boolean -> FALSE .)
+    MINUS           reduce using rule 40 (boolean -> FALSE .)
+    MULTIPLY        reduce using rule 40 (boolean -> FALSE .)
+    DIVIDE          reduce using rule 40 (boolean -> FALSE .)
+    INTEGER_DIV     reduce using rule 40 (boolean -> FALSE .)
+    MOD             reduce using rule 40 (boolean -> FALSE .)
+    EXPONENT        reduce using rule 40 (boolean -> FALSE .)
+    LESS            reduce using rule 40 (boolean -> FALSE .)
+    LESS_EQUAL      reduce using rule 40 (boolean -> FALSE .)
+    GREATER         reduce using rule 40 (boolean -> FALSE .)
+    GREATER_EQUAL   reduce using rule 40 (boolean -> FALSE .)
+    EQUALS          reduce using rule 40 (boolean -> FALSE .)
+    NOT_EQUAL       reduce using rule 40 (boolean -> FALSE .)
+    LEFT_BRACKET    reduce using rule 40 (boolean -> FALSE .)
+    $end            reduce using rule 40 (boolean -> FALSE .)
+    RIGHT_PARENTHESIS reduce using rule 40 (boolean -> FALSE .)
+    COMMA           reduce using rule 40 (boolean -> FALSE .)
+    RIGHT_BRACKET   reduce using rule 40 (boolean -> FALSE .)
+
+
+state 12
+
+    (24) list -> LEFT_BRACKET . expression RIGHT_BRACKET
+    (25) list -> LEFT_BRACKET . RIGHT_BRACKET
+    (26) expression -> . value COMMA expression
+    (27) expression -> . value
+    (28) value -> . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    RIGHT_BRACKET   shift and go to state 41
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    expression                     shift and go to state 40
+    value                          shift and go to state 42
+    prop                           shift and go to state 43
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 13
+
+    (36) Number -> REAL .
+
+    CON             reduce using rule 36 (Number -> REAL .)
+    IN              reduce using rule 36 (Number -> REAL .)
+    PLUS            reduce using rule 36 (Number -> REAL .)
+    MINUS           reduce using rule 36 (Number -> REAL .)
+    MULTIPLY        reduce using rule 36 (Number -> REAL .)
+    DIVIDE          reduce using rule 36 (Number -> REAL .)
+    INTEGER_DIV     reduce using rule 36 (Number -> REAL .)
+    MOD             reduce using rule 36 (Number -> REAL .)
+    EXPONENT        reduce using rule 36 (Number -> REAL .)
+    LESS            reduce using rule 36 (Number -> REAL .)
+    LESS_EQUAL      reduce using rule 36 (Number -> REAL .)
+    GREATER         reduce using rule 36 (Number -> REAL .)
+    GREATER_EQUAL   reduce using rule 36 (Number -> REAL .)
+    EQUALS          reduce using rule 36 (Number -> REAL .)
+    NOT_EQUAL       reduce using rule 36 (Number -> REAL .)
+    LEFT_BRACKET    reduce using rule 36 (Number -> REAL .)
+    $end            reduce using rule 36 (Number -> REAL .)
+    RIGHT_PARENTHESIS reduce using rule 36 (Number -> REAL .)
+    COMMA           reduce using rule 36 (Number -> REAL .)
+    RIGHT_BRACKET   reduce using rule 36 (Number -> REAL .)
+    NEGATION        reduce using rule 36 (Number -> REAL .)
+    LEFT_PARENTHESIS reduce using rule 36 (Number -> REAL .)
+    TUPLE_IND       reduce using rule 36 (Number -> REAL .)
+    STRING          reduce using rule 36 (Number -> REAL .)
+    TRUE            reduce using rule 36 (Number -> REAL .)
+    FALSE           reduce using rule 36 (Number -> REAL .)
+    REAL            reduce using rule 36 (Number -> REAL .)
+    INTEGER         reduce using rule 36 (Number -> REAL .)
+
+
+state 14
+
+    (37) Number -> INTEGER .
+
+    CON             reduce using rule 37 (Number -> INTEGER .)
+    IN              reduce using rule 37 (Number -> INTEGER .)
+    PLUS            reduce using rule 37 (Number -> INTEGER .)
+    MINUS           reduce using rule 37 (Number -> INTEGER .)
+    MULTIPLY        reduce using rule 37 (Number -> INTEGER .)
+    DIVIDE          reduce using rule 37 (Number -> INTEGER .)
+    INTEGER_DIV     reduce using rule 37 (Number -> INTEGER .)
+    MOD             reduce using rule 37 (Number -> INTEGER .)
+    EXPONENT        reduce using rule 37 (Number -> INTEGER .)
+    LESS            reduce using rule 37 (Number -> INTEGER .)
+    LESS_EQUAL      reduce using rule 37 (Number -> INTEGER .)
+    GREATER         reduce using rule 37 (Number -> INTEGER .)
+    GREATER_EQUAL   reduce using rule 37 (Number -> INTEGER .)
+    EQUALS          reduce using rule 37 (Number -> INTEGER .)
+    NOT_EQUAL       reduce using rule 37 (Number -> INTEGER .)
+    LEFT_BRACKET    reduce using rule 37 (Number -> INTEGER .)
+    $end            reduce using rule 37 (Number -> INTEGER .)
+    RIGHT_PARENTHESIS reduce using rule 37 (Number -> INTEGER .)
+    COMMA           reduce using rule 37 (Number -> INTEGER .)
+    RIGHT_BRACKET   reduce using rule 37 (Number -> INTEGER .)
+    NEGATION        reduce using rule 37 (Number -> INTEGER .)
+    LEFT_PARENTHESIS reduce using rule 37 (Number -> INTEGER .)
+    TUPLE_IND       reduce using rule 37 (Number -> INTEGER .)
+    STRING          reduce using rule 37 (Number -> INTEGER .)
+    TRUE            reduce using rule 37 (Number -> INTEGER .)
+    FALSE           reduce using rule 37 (Number -> INTEGER .)
+    REAL            reduce using rule 37 (Number -> INTEGER .)
+    INTEGER         reduce using rule 37 (Number -> INTEGER .)
+
+
+state 15
+
+    (5) prop -> prop CON . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    prop                           shift and go to state 44
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 16
+
+    (6) prop -> prop IN . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    prop                           shift and go to state 45
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 17
+
+    (7) prop -> prop PLUS . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    prop                           shift and go to state 46
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 18
+
+    (8) prop -> prop MINUS . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    prop                           shift and go to state 47
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 19
+
+    (9) prop -> prop MULTIPLY . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    prop                           shift and go to state 48
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 20
+
+    (10) prop -> prop DIVIDE . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    prop                           shift and go to state 49
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 21
+
+    (11) prop -> prop INTEGER_DIV . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    prop                           shift and go to state 50
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 22
+
+    (12) prop -> prop MOD . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    prop                           shift and go to state 51
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 23
+
+    (13) prop -> prop EXPONENT . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    prop                           shift and go to state 52
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 24
+
+    (14) prop -> prop LESS . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    prop                           shift and go to state 53
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 25
+
+    (15) prop -> prop LESS_EQUAL . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    prop                           shift and go to state 54
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 26
+
+    (16) prop -> prop GREATER . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    prop                           shift and go to state 55
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 27
+
+    (17) prop -> prop GREATER_EQUAL . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    prop                           shift and go to state 56
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 28
+
+    (18) prop -> prop EQUALS . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    prop                           shift and go to state 57
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 29
+
+    (19) prop -> prop NOT_EQUAL . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    prop                           shift and go to state 58
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 30
+
+    (21) prop -> prop index .
+
+    CON             reduce using rule 21 (prop -> prop index .)
+    IN              reduce using rule 21 (prop -> prop index .)
+    PLUS            reduce using rule 21 (prop -> prop index .)
+    MINUS           reduce using rule 21 (prop -> prop index .)
+    MULTIPLY        reduce using rule 21 (prop -> prop index .)
+    DIVIDE          reduce using rule 21 (prop -> prop index .)
+    INTEGER_DIV     reduce using rule 21 (prop -> prop index .)
+    MOD             reduce using rule 21 (prop -> prop index .)
+    EXPONENT        reduce using rule 21 (prop -> prop index .)
+    LESS            reduce using rule 21 (prop -> prop index .)
+    LESS_EQUAL      reduce using rule 21 (prop -> prop index .)
+    GREATER         reduce using rule 21 (prop -> prop index .)
+    GREATER_EQUAL   reduce using rule 21 (prop -> prop index .)
+    EQUALS          reduce using rule 21 (prop -> prop index .)
+    NOT_EQUAL       reduce using rule 21 (prop -> prop index .)
+    LEFT_BRACKET    reduce using rule 21 (prop -> prop index .)
+    $end            reduce using rule 21 (prop -> prop index .)
+    RIGHT_PARENTHESIS reduce using rule 21 (prop -> prop index .)
+    COMMA           reduce using rule 21 (prop -> prop index .)
+    RIGHT_BRACKET   reduce using rule 21 (prop -> prop index .)
+
+
+state 31
+
+    (22) index -> LEFT_BRACKET . prop RIGHT_BRACKET
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    prop                           shift and go to state 59
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 32
+
+    (1) prop -> MINUS prop .
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    CON             reduce using rule 1 (prop -> MINUS prop .)
+    IN              reduce using rule 1 (prop -> MINUS prop .)
+    PLUS            reduce using rule 1 (prop -> MINUS prop .)
+    MINUS           reduce using rule 1 (prop -> MINUS prop .)
+    MULTIPLY        reduce using rule 1 (prop -> MINUS prop .)
+    DIVIDE          reduce using rule 1 (prop -> MINUS prop .)
+    INTEGER_DIV     reduce using rule 1 (prop -> MINUS prop .)
+    MOD             reduce using rule 1 (prop -> MINUS prop .)
+    EXPONENT        reduce using rule 1 (prop -> MINUS prop .)
+    LESS            reduce using rule 1 (prop -> MINUS prop .)
+    LESS_EQUAL      reduce using rule 1 (prop -> MINUS prop .)
+    GREATER         reduce using rule 1 (prop -> MINUS prop .)
+    GREATER_EQUAL   reduce using rule 1 (prop -> MINUS prop .)
+    EQUALS          reduce using rule 1 (prop -> MINUS prop .)
+    NOT_EQUAL       reduce using rule 1 (prop -> MINUS prop .)
+    LEFT_BRACKET    reduce using rule 1 (prop -> MINUS prop .)
+    $end            reduce using rule 1 (prop -> MINUS prop .)
+    RIGHT_PARENTHESIS reduce using rule 1 (prop -> MINUS prop .)
+    COMMA           reduce using rule 1 (prop -> MINUS prop .)
+    RIGHT_BRACKET   reduce using rule 1 (prop -> MINUS prop .)
+
+  ! CON             [ shift and go to state 15 ]
+  ! IN              [ shift and go to state 16 ]
+  ! PLUS            [ shift and go to state 17 ]
+  ! MINUS           [ shift and go to state 18 ]
+  ! MULTIPLY        [ shift and go to state 19 ]
+  ! DIVIDE          [ shift and go to state 20 ]
+  ! INTEGER_DIV     [ shift and go to state 21 ]
+  ! MOD             [ shift and go to state 22 ]
+  ! EXPONENT        [ shift and go to state 23 ]
+  ! LESS            [ shift and go to state 24 ]
+  ! LESS_EQUAL      [ shift and go to state 25 ]
+  ! GREATER         [ shift and go to state 26 ]
+  ! GREATER_EQUAL   [ shift and go to state 27 ]
+  ! EQUALS          [ shift and go to state 28 ]
+  ! NOT_EQUAL       [ shift and go to state 29 ]
+  ! LEFT_BRACKET    [ shift and go to state 31 ]
+
+    index                          shift and go to state 30
+
+state 33
+
+    (2) prop -> NEGATION boolean .
+
+    CON             reduce using rule 2 (prop -> NEGATION boolean .)
+    IN              reduce using rule 2 (prop -> NEGATION boolean .)
+    PLUS            reduce using rule 2 (prop -> NEGATION boolean .)
+    MINUS           reduce using rule 2 (prop -> NEGATION boolean .)
+    MULTIPLY        reduce using rule 2 (prop -> NEGATION boolean .)
+    DIVIDE          reduce using rule 2 (prop -> NEGATION boolean .)
+    INTEGER_DIV     reduce using rule 2 (prop -> NEGATION boolean .)
+    MOD             reduce using rule 2 (prop -> NEGATION boolean .)
+    EXPONENT        reduce using rule 2 (prop -> NEGATION boolean .)
+    LESS            reduce using rule 2 (prop -> NEGATION boolean .)
+    LESS_EQUAL      reduce using rule 2 (prop -> NEGATION boolean .)
+    GREATER         reduce using rule 2 (prop -> NEGATION boolean .)
+    GREATER_EQUAL   reduce using rule 2 (prop -> NEGATION boolean .)
+    EQUALS          reduce using rule 2 (prop -> NEGATION boolean .)
+    NOT_EQUAL       reduce using rule 2 (prop -> NEGATION boolean .)
+    LEFT_BRACKET    reduce using rule 2 (prop -> NEGATION boolean .)
+    $end            reduce using rule 2 (prop -> NEGATION boolean .)
+    RIGHT_PARENTHESIS reduce using rule 2 (prop -> NEGATION boolean .)
+    COMMA           reduce using rule 2 (prop -> NEGATION boolean .)
+    RIGHT_BRACKET   reduce using rule 2 (prop -> NEGATION boolean .)
+
+
+state 34
+
+    (3) prop -> boolean CONJUNCTION . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+
+    boolean                        shift and go to state 60
+
+state 35
+
+    (4) prop -> boolean DISJUNCTION . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+
+    boolean                        shift and go to state 61
+
+state 36
+
+    (20) prop -> LEFT_PARENTHESIS prop . RIGHT_PARENTHESIS
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (33) element -> prop .
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    RIGHT_PARENTHESIS shift and go to state 62
+    CON             shift and go to state 15
+    IN              shift and go to state 16
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    MULTIPLY        shift and go to state 19
+    DIVIDE          shift and go to state 20
+    INTEGER_DIV     shift and go to state 21
+    MOD             shift and go to state 22
+    EXPONENT        shift and go to state 23
+    LESS            shift and go to state 24
+    LESS_EQUAL      shift and go to state 25
+    GREATER         shift and go to state 26
+    GREATER_EQUAL   shift and go to state 27
+    EQUALS          shift and go to state 28
+    NOT_EQUAL       shift and go to state 29
+    COMMA           reduce using rule 33 (element -> prop .)
+    LEFT_BRACKET    shift and go to state 31
+
+    index                          shift and go to state 30
+
+state 37
+
+    (30) prop -> LEFT_PARENTHESIS express . RIGHT_PARENTHESIS
+
+    RIGHT_PARENTHESIS shift and go to state 63
+
+
+state 38
+
+    (31) express -> element . COMMA expression
+    (32) express -> element . COMMA
+
+    COMMA           shift and go to state 64
+
+
+state 39
+
+    (29) prop -> TUPLE_IND Number . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    Number                         shift and go to state 8
+    prop                           shift and go to state 65
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+
+state 40
+
+    (24) list -> LEFT_BRACKET expression . RIGHT_BRACKET
+
+    RIGHT_BRACKET   shift and go to state 66
+
+
+state 41
+
+    (25) list -> LEFT_BRACKET RIGHT_BRACKET .
+
+    CON             reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+    IN              reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+    PLUS            reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+    MINUS           reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+    MULTIPLY        reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+    DIVIDE          reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+    INTEGER_DIV     reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+    MOD             reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+    EXPONENT        reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+    LESS            reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+    LESS_EQUAL      reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+    GREATER         reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+    GREATER_EQUAL   reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+    EQUALS          reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+    NOT_EQUAL       reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+    LEFT_BRACKET    reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+    $end            reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+    RIGHT_PARENTHESIS reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+    COMMA           reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+    RIGHT_BRACKET   reduce using rule 25 (list -> LEFT_BRACKET RIGHT_BRACKET .)
+
+
+state 42
+
+    (26) expression -> value . COMMA expression
+    (27) expression -> value .
+
+    COMMA           shift and go to state 67
+    RIGHT_BRACKET   reduce using rule 27 (expression -> value .)
+    RIGHT_PARENTHESIS reduce using rule 27 (expression -> value .)
+
+
+state 43
+
+    (28) value -> prop .
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    COMMA           reduce using rule 28 (value -> prop .)
+    RIGHT_BRACKET   reduce using rule 28 (value -> prop .)
+    RIGHT_PARENTHESIS reduce using rule 28 (value -> prop .)
+    CON             shift and go to state 15
+    IN              shift and go to state 16
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    MULTIPLY        shift and go to state 19
+    DIVIDE          shift and go to state 20
+    INTEGER_DIV     shift and go to state 21
+    MOD             shift and go to state 22
+    EXPONENT        shift and go to state 23
+    LESS            shift and go to state 24
+    LESS_EQUAL      shift and go to state 25
+    GREATER         shift and go to state 26
+    GREATER_EQUAL   shift and go to state 27
+    EQUALS          shift and go to state 28
+    NOT_EQUAL       shift and go to state 29
+    LEFT_BRACKET    shift and go to state 31
+
+    index                          shift and go to state 30
+
+state 44
+
+    (5) prop -> prop CON prop .
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    LESS            reduce using rule 5 (prop -> prop CON prop .)
+    LESS_EQUAL      reduce using rule 5 (prop -> prop CON prop .)
+    GREATER         reduce using rule 5 (prop -> prop CON prop .)
+    GREATER_EQUAL   reduce using rule 5 (prop -> prop CON prop .)
+    EQUALS          reduce using rule 5 (prop -> prop CON prop .)
+    NOT_EQUAL       reduce using rule 5 (prop -> prop CON prop .)
+    $end            reduce using rule 5 (prop -> prop CON prop .)
+    RIGHT_PARENTHESIS reduce using rule 5 (prop -> prop CON prop .)
+    COMMA           reduce using rule 5 (prop -> prop CON prop .)
+    RIGHT_BRACKET   reduce using rule 5 (prop -> prop CON prop .)
+    CON             shift and go to state 15
+    IN              shift and go to state 16
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    MULTIPLY        shift and go to state 19
+    DIVIDE          shift and go to state 20
+    INTEGER_DIV     shift and go to state 21
+    MOD             shift and go to state 22
+    EXPONENT        shift and go to state 23
+    LEFT_BRACKET    shift and go to state 31
+
+  ! CON             [ reduce using rule 5 (prop -> prop CON prop .) ]
+  ! IN              [ reduce using rule 5 (prop -> prop CON prop .) ]
+  ! PLUS            [ reduce using rule 5 (prop -> prop CON prop .) ]
+  ! MINUS           [ reduce using rule 5 (prop -> prop CON prop .) ]
+  ! MULTIPLY        [ reduce using rule 5 (prop -> prop CON prop .) ]
+  ! DIVIDE          [ reduce using rule 5 (prop -> prop CON prop .) ]
+  ! INTEGER_DIV     [ reduce using rule 5 (prop -> prop CON prop .) ]
+  ! MOD             [ reduce using rule 5 (prop -> prop CON prop .) ]
+  ! EXPONENT        [ reduce using rule 5 (prop -> prop CON prop .) ]
+  ! LEFT_BRACKET    [ reduce using rule 5 (prop -> prop CON prop .) ]
+  ! LESS            [ shift and go to state 24 ]
+  ! LESS_EQUAL      [ shift and go to state 25 ]
+  ! GREATER         [ shift and go to state 26 ]
+  ! GREATER_EQUAL   [ shift and go to state 27 ]
+  ! EQUALS          [ shift and go to state 28 ]
+  ! NOT_EQUAL       [ shift and go to state 29 ]
+
+    index                          shift and go to state 30
+
+state 45
+
+    (6) prop -> prop IN prop .
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    CON             reduce using rule 6 (prop -> prop IN prop .)
+    IN              reduce using rule 6 (prop -> prop IN prop .)
+    LESS            reduce using rule 6 (prop -> prop IN prop .)
+    LESS_EQUAL      reduce using rule 6 (prop -> prop IN prop .)
+    GREATER         reduce using rule 6 (prop -> prop IN prop .)
+    GREATER_EQUAL   reduce using rule 6 (prop -> prop IN prop .)
+    EQUALS          reduce using rule 6 (prop -> prop IN prop .)
+    NOT_EQUAL       reduce using rule 6 (prop -> prop IN prop .)
+    $end            reduce using rule 6 (prop -> prop IN prop .)
+    RIGHT_PARENTHESIS reduce using rule 6 (prop -> prop IN prop .)
+    COMMA           reduce using rule 6 (prop -> prop IN prop .)
+    RIGHT_BRACKET   reduce using rule 6 (prop -> prop IN prop .)
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    MULTIPLY        shift and go to state 19
+    DIVIDE          shift and go to state 20
+    INTEGER_DIV     shift and go to state 21
+    MOD             shift and go to state 22
+    EXPONENT        shift and go to state 23
+    LEFT_BRACKET    shift and go to state 31
+
+  ! PLUS            [ reduce using rule 6 (prop -> prop IN prop .) ]
+  ! MINUS           [ reduce using rule 6 (prop -> prop IN prop .) ]
+  ! MULTIPLY        [ reduce using rule 6 (prop -> prop IN prop .) ]
+  ! DIVIDE          [ reduce using rule 6 (prop -> prop IN prop .) ]
+  ! INTEGER_DIV     [ reduce using rule 6 (prop -> prop IN prop .) ]
+  ! MOD             [ reduce using rule 6 (prop -> prop IN prop .) ]
+  ! EXPONENT        [ reduce using rule 6 (prop -> prop IN prop .) ]
+  ! LEFT_BRACKET    [ reduce using rule 6 (prop -> prop IN prop .) ]
+  ! CON             [ shift and go to state 15 ]
+  ! IN              [ shift and go to state 16 ]
+  ! LESS            [ shift and go to state 24 ]
+  ! LESS_EQUAL      [ shift and go to state 25 ]
+  ! GREATER         [ shift and go to state 26 ]
+  ! GREATER_EQUAL   [ shift and go to state 27 ]
+  ! EQUALS          [ shift and go to state 28 ]
+  ! NOT_EQUAL       [ shift and go to state 29 ]
+
+    index                          shift and go to state 30
+
+state 46
+
+    (7) prop -> prop PLUS prop .
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    CON             reduce using rule 7 (prop -> prop PLUS prop .)
+    IN              reduce using rule 7 (prop -> prop PLUS prop .)
+    PLUS            reduce using rule 7 (prop -> prop PLUS prop .)
+    MINUS           reduce using rule 7 (prop -> prop PLUS prop .)
+    LESS            reduce using rule 7 (prop -> prop PLUS prop .)
+    LESS_EQUAL      reduce using rule 7 (prop -> prop PLUS prop .)
+    GREATER         reduce using rule 7 (prop -> prop PLUS prop .)
+    GREATER_EQUAL   reduce using rule 7 (prop -> prop PLUS prop .)
+    EQUALS          reduce using rule 7 (prop -> prop PLUS prop .)
+    NOT_EQUAL       reduce using rule 7 (prop -> prop PLUS prop .)
+    $end            reduce using rule 7 (prop -> prop PLUS prop .)
+    RIGHT_PARENTHESIS reduce using rule 7 (prop -> prop PLUS prop .)
+    COMMA           reduce using rule 7 (prop -> prop PLUS prop .)
+    RIGHT_BRACKET   reduce using rule 7 (prop -> prop PLUS prop .)
+    MULTIPLY        shift and go to state 19
+    DIVIDE          shift and go to state 20
+    INTEGER_DIV     shift and go to state 21
+    MOD             shift and go to state 22
+    EXPONENT        shift and go to state 23
+    LEFT_BRACKET    shift and go to state 31
+
+  ! MULTIPLY        [ reduce using rule 7 (prop -> prop PLUS prop .) ]
+  ! DIVIDE          [ reduce using rule 7 (prop -> prop PLUS prop .) ]
+  ! INTEGER_DIV     [ reduce using rule 7 (prop -> prop PLUS prop .) ]
+  ! MOD             [ reduce using rule 7 (prop -> prop PLUS prop .) ]
+  ! EXPONENT        [ reduce using rule 7 (prop -> prop PLUS prop .) ]
+  ! LEFT_BRACKET    [ reduce using rule 7 (prop -> prop PLUS prop .) ]
+  ! CON             [ shift and go to state 15 ]
+  ! IN              [ shift and go to state 16 ]
+  ! PLUS            [ shift and go to state 17 ]
+  ! MINUS           [ shift and go to state 18 ]
+  ! LESS            [ shift and go to state 24 ]
+  ! LESS_EQUAL      [ shift and go to state 25 ]
+  ! GREATER         [ shift and go to state 26 ]
+  ! GREATER_EQUAL   [ shift and go to state 27 ]
+  ! EQUALS          [ shift and go to state 28 ]
+  ! NOT_EQUAL       [ shift and go to state 29 ]
+
+    index                          shift and go to state 30
+
+state 47
+
+    (8) prop -> prop MINUS prop .
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    CON             reduce using rule 8 (prop -> prop MINUS prop .)
+    IN              reduce using rule 8 (prop -> prop MINUS prop .)
+    PLUS            reduce using rule 8 (prop -> prop MINUS prop .)
+    MINUS           reduce using rule 8 (prop -> prop MINUS prop .)
+    LESS            reduce using rule 8 (prop -> prop MINUS prop .)
+    LESS_EQUAL      reduce using rule 8 (prop -> prop MINUS prop .)
+    GREATER         reduce using rule 8 (prop -> prop MINUS prop .)
+    GREATER_EQUAL   reduce using rule 8 (prop -> prop MINUS prop .)
+    EQUALS          reduce using rule 8 (prop -> prop MINUS prop .)
+    NOT_EQUAL       reduce using rule 8 (prop -> prop MINUS prop .)
+    $end            reduce using rule 8 (prop -> prop MINUS prop .)
+    RIGHT_PARENTHESIS reduce using rule 8 (prop -> prop MINUS prop .)
+    COMMA           reduce using rule 8 (prop -> prop MINUS prop .)
+    RIGHT_BRACKET   reduce using rule 8 (prop -> prop MINUS prop .)
+    MULTIPLY        shift and go to state 19
+    DIVIDE          shift and go to state 20
+    INTEGER_DIV     shift and go to state 21
+    MOD             shift and go to state 22
+    EXPONENT        shift and go to state 23
+    LEFT_BRACKET    shift and go to state 31
+
+  ! MULTIPLY        [ reduce using rule 8 (prop -> prop MINUS prop .) ]
+  ! DIVIDE          [ reduce using rule 8 (prop -> prop MINUS prop .) ]
+  ! INTEGER_DIV     [ reduce using rule 8 (prop -> prop MINUS prop .) ]
+  ! MOD             [ reduce using rule 8 (prop -> prop MINUS prop .) ]
+  ! EXPONENT        [ reduce using rule 8 (prop -> prop MINUS prop .) ]
+  ! LEFT_BRACKET    [ reduce using rule 8 (prop -> prop MINUS prop .) ]
+  ! CON             [ shift and go to state 15 ]
+  ! IN              [ shift and go to state 16 ]
+  ! PLUS            [ shift and go to state 17 ]
+  ! MINUS           [ shift and go to state 18 ]
+  ! LESS            [ shift and go to state 24 ]
+  ! LESS_EQUAL      [ shift and go to state 25 ]
+  ! GREATER         [ shift and go to state 26 ]
+  ! GREATER_EQUAL   [ shift and go to state 27 ]
+  ! EQUALS          [ shift and go to state 28 ]
+  ! NOT_EQUAL       [ shift and go to state 29 ]
+
+    index                          shift and go to state 30
+
+state 48
+
+    (9) prop -> prop MULTIPLY prop .
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    CON             reduce using rule 9 (prop -> prop MULTIPLY prop .)
+    IN              reduce using rule 9 (prop -> prop MULTIPLY prop .)
+    PLUS            reduce using rule 9 (prop -> prop MULTIPLY prop .)
+    MINUS           reduce using rule 9 (prop -> prop MULTIPLY prop .)
+    MULTIPLY        reduce using rule 9 (prop -> prop MULTIPLY prop .)
+    DIVIDE          reduce using rule 9 (prop -> prop MULTIPLY prop .)
+    INTEGER_DIV     reduce using rule 9 (prop -> prop MULTIPLY prop .)
+    MOD             reduce using rule 9 (prop -> prop MULTIPLY prop .)
+    LESS            reduce using rule 9 (prop -> prop MULTIPLY prop .)
+    LESS_EQUAL      reduce using rule 9 (prop -> prop MULTIPLY prop .)
+    GREATER         reduce using rule 9 (prop -> prop MULTIPLY prop .)
+    GREATER_EQUAL   reduce using rule 9 (prop -> prop MULTIPLY prop .)
+    EQUALS          reduce using rule 9 (prop -> prop MULTIPLY prop .)
+    NOT_EQUAL       reduce using rule 9 (prop -> prop MULTIPLY prop .)
+    $end            reduce using rule 9 (prop -> prop MULTIPLY prop .)
+    RIGHT_PARENTHESIS reduce using rule 9 (prop -> prop MULTIPLY prop .)
+    COMMA           reduce using rule 9 (prop -> prop MULTIPLY prop .)
+    RIGHT_BRACKET   reduce using rule 9 (prop -> prop MULTIPLY prop .)
+    EXPONENT        shift and go to state 23
+    LEFT_BRACKET    shift and go to state 31
+
+  ! EXPONENT        [ reduce using rule 9 (prop -> prop MULTIPLY prop .) ]
+  ! LEFT_BRACKET    [ reduce using rule 9 (prop -> prop MULTIPLY prop .) ]
+  ! CON             [ shift and go to state 15 ]
+  ! IN              [ shift and go to state 16 ]
+  ! PLUS            [ shift and go to state 17 ]
+  ! MINUS           [ shift and go to state 18 ]
+  ! MULTIPLY        [ shift and go to state 19 ]
+  ! DIVIDE          [ shift and go to state 20 ]
+  ! INTEGER_DIV     [ shift and go to state 21 ]
+  ! MOD             [ shift and go to state 22 ]
+  ! LESS            [ shift and go to state 24 ]
+  ! LESS_EQUAL      [ shift and go to state 25 ]
+  ! GREATER         [ shift and go to state 26 ]
+  ! GREATER_EQUAL   [ shift and go to state 27 ]
+  ! EQUALS          [ shift and go to state 28 ]
+  ! NOT_EQUAL       [ shift and go to state 29 ]
+
+    index                          shift and go to state 30
+
+state 49
+
+    (10) prop -> prop DIVIDE prop .
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    CON             reduce using rule 10 (prop -> prop DIVIDE prop .)
+    IN              reduce using rule 10 (prop -> prop DIVIDE prop .)
+    PLUS            reduce using rule 10 (prop -> prop DIVIDE prop .)
+    MINUS           reduce using rule 10 (prop -> prop DIVIDE prop .)
+    MULTIPLY        reduce using rule 10 (prop -> prop DIVIDE prop .)
+    DIVIDE          reduce using rule 10 (prop -> prop DIVIDE prop .)
+    INTEGER_DIV     reduce using rule 10 (prop -> prop DIVIDE prop .)
+    MOD             reduce using rule 10 (prop -> prop DIVIDE prop .)
+    LESS            reduce using rule 10 (prop -> prop DIVIDE prop .)
+    LESS_EQUAL      reduce using rule 10 (prop -> prop DIVIDE prop .)
+    GREATER         reduce using rule 10 (prop -> prop DIVIDE prop .)
+    GREATER_EQUAL   reduce using rule 10 (prop -> prop DIVIDE prop .)
+    EQUALS          reduce using rule 10 (prop -> prop DIVIDE prop .)
+    NOT_EQUAL       reduce using rule 10 (prop -> prop DIVIDE prop .)
+    $end            reduce using rule 10 (prop -> prop DIVIDE prop .)
+    RIGHT_PARENTHESIS reduce using rule 10 (prop -> prop DIVIDE prop .)
+    COMMA           reduce using rule 10 (prop -> prop DIVIDE prop .)
+    RIGHT_BRACKET   reduce using rule 10 (prop -> prop DIVIDE prop .)
+    EXPONENT        shift and go to state 23
+    LEFT_BRACKET    shift and go to state 31
+
+  ! EXPONENT        [ reduce using rule 10 (prop -> prop DIVIDE prop .) ]
+  ! LEFT_BRACKET    [ reduce using rule 10 (prop -> prop DIVIDE prop .) ]
+  ! CON             [ shift and go to state 15 ]
+  ! IN              [ shift and go to state 16 ]
+  ! PLUS            [ shift and go to state 17 ]
+  ! MINUS           [ shift and go to state 18 ]
+  ! MULTIPLY        [ shift and go to state 19 ]
+  ! DIVIDE          [ shift and go to state 20 ]
+  ! INTEGER_DIV     [ shift and go to state 21 ]
+  ! MOD             [ shift and go to state 22 ]
+  ! LESS            [ shift and go to state 24 ]
+  ! LESS_EQUAL      [ shift and go to state 25 ]
+  ! GREATER         [ shift and go to state 26 ]
+  ! GREATER_EQUAL   [ shift and go to state 27 ]
+  ! EQUALS          [ shift and go to state 28 ]
+  ! NOT_EQUAL       [ shift and go to state 29 ]
+
+    index                          shift and go to state 30
+
+state 50
+
+    (11) prop -> prop INTEGER_DIV prop .
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    CON             reduce using rule 11 (prop -> prop INTEGER_DIV prop .)
+    IN              reduce using rule 11 (prop -> prop INTEGER_DIV prop .)
+    PLUS            reduce using rule 11 (prop -> prop INTEGER_DIV prop .)
+    MINUS           reduce using rule 11 (prop -> prop INTEGER_DIV prop .)
+    MULTIPLY        reduce using rule 11 (prop -> prop INTEGER_DIV prop .)
+    DIVIDE          reduce using rule 11 (prop -> prop INTEGER_DIV prop .)
+    INTEGER_DIV     reduce using rule 11 (prop -> prop INTEGER_DIV prop .)
+    MOD             reduce using rule 11 (prop -> prop INTEGER_DIV prop .)
+    LESS            reduce using rule 11 (prop -> prop INTEGER_DIV prop .)
+    LESS_EQUAL      reduce using rule 11 (prop -> prop INTEGER_DIV prop .)
+    GREATER         reduce using rule 11 (prop -> prop INTEGER_DIV prop .)
+    GREATER_EQUAL   reduce using rule 11 (prop -> prop INTEGER_DIV prop .)
+    EQUALS          reduce using rule 11 (prop -> prop INTEGER_DIV prop .)
+    NOT_EQUAL       reduce using rule 11 (prop -> prop INTEGER_DIV prop .)
+    $end            reduce using rule 11 (prop -> prop INTEGER_DIV prop .)
+    RIGHT_PARENTHESIS reduce using rule 11 (prop -> prop INTEGER_DIV prop .)
+    COMMA           reduce using rule 11 (prop -> prop INTEGER_DIV prop .)
+    RIGHT_BRACKET   reduce using rule 11 (prop -> prop INTEGER_DIV prop .)
+    EXPONENT        shift and go to state 23
+    LEFT_BRACKET    shift and go to state 31
+
+  ! EXPONENT        [ reduce using rule 11 (prop -> prop INTEGER_DIV prop .) ]
+  ! LEFT_BRACKET    [ reduce using rule 11 (prop -> prop INTEGER_DIV prop .) ]
+  ! CON             [ shift and go to state 15 ]
+  ! IN              [ shift and go to state 16 ]
+  ! PLUS            [ shift and go to state 17 ]
+  ! MINUS           [ shift and go to state 18 ]
+  ! MULTIPLY        [ shift and go to state 19 ]
+  ! DIVIDE          [ shift and go to state 20 ]
+  ! INTEGER_DIV     [ shift and go to state 21 ]
+  ! MOD             [ shift and go to state 22 ]
+  ! LESS            [ shift and go to state 24 ]
+  ! LESS_EQUAL      [ shift and go to state 25 ]
+  ! GREATER         [ shift and go to state 26 ]
+  ! GREATER_EQUAL   [ shift and go to state 27 ]
+  ! EQUALS          [ shift and go to state 28 ]
+  ! NOT_EQUAL       [ shift and go to state 29 ]
+
+    index                          shift and go to state 30
+
+state 51
+
+    (12) prop -> prop MOD prop .
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    CON             reduce using rule 12 (prop -> prop MOD prop .)
+    IN              reduce using rule 12 (prop -> prop MOD prop .)
+    PLUS            reduce using rule 12 (prop -> prop MOD prop .)
+    MINUS           reduce using rule 12 (prop -> prop MOD prop .)
+    MULTIPLY        reduce using rule 12 (prop -> prop MOD prop .)
+    DIVIDE          reduce using rule 12 (prop -> prop MOD prop .)
+    INTEGER_DIV     reduce using rule 12 (prop -> prop MOD prop .)
+    MOD             reduce using rule 12 (prop -> prop MOD prop .)
+    LESS            reduce using rule 12 (prop -> prop MOD prop .)
+    LESS_EQUAL      reduce using rule 12 (prop -> prop MOD prop .)
+    GREATER         reduce using rule 12 (prop -> prop MOD prop .)
+    GREATER_EQUAL   reduce using rule 12 (prop -> prop MOD prop .)
+    EQUALS          reduce using rule 12 (prop -> prop MOD prop .)
+    NOT_EQUAL       reduce using rule 12 (prop -> prop MOD prop .)
+    $end            reduce using rule 12 (prop -> prop MOD prop .)
+    RIGHT_PARENTHESIS reduce using rule 12 (prop -> prop MOD prop .)
+    COMMA           reduce using rule 12 (prop -> prop MOD prop .)
+    RIGHT_BRACKET   reduce using rule 12 (prop -> prop MOD prop .)
+    EXPONENT        shift and go to state 23
+    LEFT_BRACKET    shift and go to state 31
+
+  ! EXPONENT        [ reduce using rule 12 (prop -> prop MOD prop .) ]
+  ! LEFT_BRACKET    [ reduce using rule 12 (prop -> prop MOD prop .) ]
+  ! CON             [ shift and go to state 15 ]
+  ! IN              [ shift and go to state 16 ]
+  ! PLUS            [ shift and go to state 17 ]
+  ! MINUS           [ shift and go to state 18 ]
+  ! MULTIPLY        [ shift and go to state 19 ]
+  ! DIVIDE          [ shift and go to state 20 ]
+  ! INTEGER_DIV     [ shift and go to state 21 ]
+  ! MOD             [ shift and go to state 22 ]
+  ! LESS            [ shift and go to state 24 ]
+  ! LESS_EQUAL      [ shift and go to state 25 ]
+  ! GREATER         [ shift and go to state 26 ]
+  ! GREATER_EQUAL   [ shift and go to state 27 ]
+  ! EQUALS          [ shift and go to state 28 ]
+  ! NOT_EQUAL       [ shift and go to state 29 ]
+
+    index                          shift and go to state 30
+
+state 52
+
+    (13) prop -> prop EXPONENT prop .
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    CON             reduce using rule 13 (prop -> prop EXPONENT prop .)
+    IN              reduce using rule 13 (prop -> prop EXPONENT prop .)
+    PLUS            reduce using rule 13 (prop -> prop EXPONENT prop .)
+    MINUS           reduce using rule 13 (prop -> prop EXPONENT prop .)
+    MULTIPLY        reduce using rule 13 (prop -> prop EXPONENT prop .)
+    DIVIDE          reduce using rule 13 (prop -> prop EXPONENT prop .)
+    INTEGER_DIV     reduce using rule 13 (prop -> prop EXPONENT prop .)
+    MOD             reduce using rule 13 (prop -> prop EXPONENT prop .)
+    LESS            reduce using rule 13 (prop -> prop EXPONENT prop .)
+    LESS_EQUAL      reduce using rule 13 (prop -> prop EXPONENT prop .)
+    GREATER         reduce using rule 13 (prop -> prop EXPONENT prop .)
+    GREATER_EQUAL   reduce using rule 13 (prop -> prop EXPONENT prop .)
+    EQUALS          reduce using rule 13 (prop -> prop EXPONENT prop .)
+    NOT_EQUAL       reduce using rule 13 (prop -> prop EXPONENT prop .)
+    $end            reduce using rule 13 (prop -> prop EXPONENT prop .)
+    RIGHT_PARENTHESIS reduce using rule 13 (prop -> prop EXPONENT prop .)
+    COMMA           reduce using rule 13 (prop -> prop EXPONENT prop .)
+    RIGHT_BRACKET   reduce using rule 13 (prop -> prop EXPONENT prop .)
+    EXPONENT        shift and go to state 23
+    LEFT_BRACKET    shift and go to state 31
+
+  ! EXPONENT        [ reduce using rule 13 (prop -> prop EXPONENT prop .) ]
+  ! LEFT_BRACKET    [ reduce using rule 13 (prop -> prop EXPONENT prop .) ]
+  ! CON             [ shift and go to state 15 ]
+  ! IN              [ shift and go to state 16 ]
+  ! PLUS            [ shift and go to state 17 ]
+  ! MINUS           [ shift and go to state 18 ]
+  ! MULTIPLY        [ shift and go to state 19 ]
+  ! DIVIDE          [ shift and go to state 20 ]
+  ! INTEGER_DIV     [ shift and go to state 21 ]
+  ! MOD             [ shift and go to state 22 ]
+  ! LESS            [ shift and go to state 24 ]
+  ! LESS_EQUAL      [ shift and go to state 25 ]
+  ! GREATER         [ shift and go to state 26 ]
+  ! GREATER_EQUAL   [ shift and go to state 27 ]
+  ! EQUALS          [ shift and go to state 28 ]
+  ! NOT_EQUAL       [ shift and go to state 29 ]
+
+    index                          shift and go to state 30
+
+state 53
+
+    (14) prop -> prop LESS prop .
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    LESS            reduce using rule 14 (prop -> prop LESS prop .)
+    LESS_EQUAL      reduce using rule 14 (prop -> prop LESS prop .)
+    GREATER         reduce using rule 14 (prop -> prop LESS prop .)
+    GREATER_EQUAL   reduce using rule 14 (prop -> prop LESS prop .)
+    EQUALS          reduce using rule 14 (prop -> prop LESS prop .)
+    NOT_EQUAL       reduce using rule 14 (prop -> prop LESS prop .)
+    $end            reduce using rule 14 (prop -> prop LESS prop .)
+    RIGHT_PARENTHESIS reduce using rule 14 (prop -> prop LESS prop .)
+    COMMA           reduce using rule 14 (prop -> prop LESS prop .)
+    RIGHT_BRACKET   reduce using rule 14 (prop -> prop LESS prop .)
+    CON             shift and go to state 15
+    IN              shift and go to state 16
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    MULTIPLY        shift and go to state 19
+    DIVIDE          shift and go to state 20
+    INTEGER_DIV     shift and go to state 21
+    MOD             shift and go to state 22
+    EXPONENT        shift and go to state 23
+    LEFT_BRACKET    shift and go to state 31
+
+  ! CON             [ reduce using rule 14 (prop -> prop LESS prop .) ]
+  ! IN              [ reduce using rule 14 (prop -> prop LESS prop .) ]
+  ! PLUS            [ reduce using rule 14 (prop -> prop LESS prop .) ]
+  ! MINUS           [ reduce using rule 14 (prop -> prop LESS prop .) ]
+  ! MULTIPLY        [ reduce using rule 14 (prop -> prop LESS prop .) ]
+  ! DIVIDE          [ reduce using rule 14 (prop -> prop LESS prop .) ]
+  ! INTEGER_DIV     [ reduce using rule 14 (prop -> prop LESS prop .) ]
+  ! MOD             [ reduce using rule 14 (prop -> prop LESS prop .) ]
+  ! EXPONENT        [ reduce using rule 14 (prop -> prop LESS prop .) ]
+  ! LEFT_BRACKET    [ reduce using rule 14 (prop -> prop LESS prop .) ]
+  ! LESS            [ shift and go to state 24 ]
+  ! LESS_EQUAL      [ shift and go to state 25 ]
+  ! GREATER         [ shift and go to state 26 ]
+  ! GREATER_EQUAL   [ shift and go to state 27 ]
+  ! EQUALS          [ shift and go to state 28 ]
+  ! NOT_EQUAL       [ shift and go to state 29 ]
+
+    index                          shift and go to state 30
+
+state 54
+
+    (15) prop -> prop LESS_EQUAL prop .
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    LESS            reduce using rule 15 (prop -> prop LESS_EQUAL prop .)
+    LESS_EQUAL      reduce using rule 15 (prop -> prop LESS_EQUAL prop .)
+    GREATER         reduce using rule 15 (prop -> prop LESS_EQUAL prop .)
+    GREATER_EQUAL   reduce using rule 15 (prop -> prop LESS_EQUAL prop .)
+    EQUALS          reduce using rule 15 (prop -> prop LESS_EQUAL prop .)
+    NOT_EQUAL       reduce using rule 15 (prop -> prop LESS_EQUAL prop .)
+    $end            reduce using rule 15 (prop -> prop LESS_EQUAL prop .)
+    RIGHT_PARENTHESIS reduce using rule 15 (prop -> prop LESS_EQUAL prop .)
+    COMMA           reduce using rule 15 (prop -> prop LESS_EQUAL prop .)
+    RIGHT_BRACKET   reduce using rule 15 (prop -> prop LESS_EQUAL prop .)
+    CON             shift and go to state 15
+    IN              shift and go to state 16
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    MULTIPLY        shift and go to state 19
+    DIVIDE          shift and go to state 20
+    INTEGER_DIV     shift and go to state 21
+    MOD             shift and go to state 22
+    EXPONENT        shift and go to state 23
+    LEFT_BRACKET    shift and go to state 31
+
+  ! CON             [ reduce using rule 15 (prop -> prop LESS_EQUAL prop .) ]
+  ! IN              [ reduce using rule 15 (prop -> prop LESS_EQUAL prop .) ]
+  ! PLUS            [ reduce using rule 15 (prop -> prop LESS_EQUAL prop .) ]
+  ! MINUS           [ reduce using rule 15 (prop -> prop LESS_EQUAL prop .) ]
+  ! MULTIPLY        [ reduce using rule 15 (prop -> prop LESS_EQUAL prop .) ]
+  ! DIVIDE          [ reduce using rule 15 (prop -> prop LESS_EQUAL prop .) ]
+  ! INTEGER_DIV     [ reduce using rule 15 (prop -> prop LESS_EQUAL prop .) ]
+  ! MOD             [ reduce using rule 15 (prop -> prop LESS_EQUAL prop .) ]
+  ! EXPONENT        [ reduce using rule 15 (prop -> prop LESS_EQUAL prop .) ]
+  ! LEFT_BRACKET    [ reduce using rule 15 (prop -> prop LESS_EQUAL prop .) ]
+  ! LESS            [ shift and go to state 24 ]
+  ! LESS_EQUAL      [ shift and go to state 25 ]
+  ! GREATER         [ shift and go to state 26 ]
+  ! GREATER_EQUAL   [ shift and go to state 27 ]
+  ! EQUALS          [ shift and go to state 28 ]
+  ! NOT_EQUAL       [ shift and go to state 29 ]
+
+    index                          shift and go to state 30
+
+state 55
+
+    (16) prop -> prop GREATER prop .
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    LESS            reduce using rule 16 (prop -> prop GREATER prop .)
+    LESS_EQUAL      reduce using rule 16 (prop -> prop GREATER prop .)
+    GREATER         reduce using rule 16 (prop -> prop GREATER prop .)
+    GREATER_EQUAL   reduce using rule 16 (prop -> prop GREATER prop .)
+    EQUALS          reduce using rule 16 (prop -> prop GREATER prop .)
+    NOT_EQUAL       reduce using rule 16 (prop -> prop GREATER prop .)
+    $end            reduce using rule 16 (prop -> prop GREATER prop .)
+    RIGHT_PARENTHESIS reduce using rule 16 (prop -> prop GREATER prop .)
+    COMMA           reduce using rule 16 (prop -> prop GREATER prop .)
+    RIGHT_BRACKET   reduce using rule 16 (prop -> prop GREATER prop .)
+    CON             shift and go to state 15
+    IN              shift and go to state 16
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    MULTIPLY        shift and go to state 19
+    DIVIDE          shift and go to state 20
+    INTEGER_DIV     shift and go to state 21
+    MOD             shift and go to state 22
+    EXPONENT        shift and go to state 23
+    LEFT_BRACKET    shift and go to state 31
+
+  ! CON             [ reduce using rule 16 (prop -> prop GREATER prop .) ]
+  ! IN              [ reduce using rule 16 (prop -> prop GREATER prop .) ]
+  ! PLUS            [ reduce using rule 16 (prop -> prop GREATER prop .) ]
+  ! MINUS           [ reduce using rule 16 (prop -> prop GREATER prop .) ]
+  ! MULTIPLY        [ reduce using rule 16 (prop -> prop GREATER prop .) ]
+  ! DIVIDE          [ reduce using rule 16 (prop -> prop GREATER prop .) ]
+  ! INTEGER_DIV     [ reduce using rule 16 (prop -> prop GREATER prop .) ]
+  ! MOD             [ reduce using rule 16 (prop -> prop GREATER prop .) ]
+  ! EXPONENT        [ reduce using rule 16 (prop -> prop GREATER prop .) ]
+  ! LEFT_BRACKET    [ reduce using rule 16 (prop -> prop GREATER prop .) ]
+  ! LESS            [ shift and go to state 24 ]
+  ! LESS_EQUAL      [ shift and go to state 25 ]
+  ! GREATER         [ shift and go to state 26 ]
+  ! GREATER_EQUAL   [ shift and go to state 27 ]
+  ! EQUALS          [ shift and go to state 28 ]
+  ! NOT_EQUAL       [ shift and go to state 29 ]
+
+    index                          shift and go to state 30
+
+state 56
+
+    (17) prop -> prop GREATER_EQUAL prop .
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    LESS            reduce using rule 17 (prop -> prop GREATER_EQUAL prop .)
+    LESS_EQUAL      reduce using rule 17 (prop -> prop GREATER_EQUAL prop .)
+    GREATER         reduce using rule 17 (prop -> prop GREATER_EQUAL prop .)
+    GREATER_EQUAL   reduce using rule 17 (prop -> prop GREATER_EQUAL prop .)
+    EQUALS          reduce using rule 17 (prop -> prop GREATER_EQUAL prop .)
+    NOT_EQUAL       reduce using rule 17 (prop -> prop GREATER_EQUAL prop .)
+    $end            reduce using rule 17 (prop -> prop GREATER_EQUAL prop .)
+    RIGHT_PARENTHESIS reduce using rule 17 (prop -> prop GREATER_EQUAL prop .)
+    COMMA           reduce using rule 17 (prop -> prop GREATER_EQUAL prop .)
+    RIGHT_BRACKET   reduce using rule 17 (prop -> prop GREATER_EQUAL prop .)
+    CON             shift and go to state 15
+    IN              shift and go to state 16
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    MULTIPLY        shift and go to state 19
+    DIVIDE          shift and go to state 20
+    INTEGER_DIV     shift and go to state 21
+    MOD             shift and go to state 22
+    EXPONENT        shift and go to state 23
+    LEFT_BRACKET    shift and go to state 31
+
+  ! CON             [ reduce using rule 17 (prop -> prop GREATER_EQUAL prop .) ]
+  ! IN              [ reduce using rule 17 (prop -> prop GREATER_EQUAL prop .) ]
+  ! PLUS            [ reduce using rule 17 (prop -> prop GREATER_EQUAL prop .) ]
+  ! MINUS           [ reduce using rule 17 (prop -> prop GREATER_EQUAL prop .) ]
+  ! MULTIPLY        [ reduce using rule 17 (prop -> prop GREATER_EQUAL prop .) ]
+  ! DIVIDE          [ reduce using rule 17 (prop -> prop GREATER_EQUAL prop .) ]
+  ! INTEGER_DIV     [ reduce using rule 17 (prop -> prop GREATER_EQUAL prop .) ]
+  ! MOD             [ reduce using rule 17 (prop -> prop GREATER_EQUAL prop .) ]
+  ! EXPONENT        [ reduce using rule 17 (prop -> prop GREATER_EQUAL prop .) ]
+  ! LEFT_BRACKET    [ reduce using rule 17 (prop -> prop GREATER_EQUAL prop .) ]
+  ! LESS            [ shift and go to state 24 ]
+  ! LESS_EQUAL      [ shift and go to state 25 ]
+  ! GREATER         [ shift and go to state 26 ]
+  ! GREATER_EQUAL   [ shift and go to state 27 ]
+  ! EQUALS          [ shift and go to state 28 ]
+  ! NOT_EQUAL       [ shift and go to state 29 ]
+
+    index                          shift and go to state 30
+
+state 57
+
+    (18) prop -> prop EQUALS prop .
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    LESS            reduce using rule 18 (prop -> prop EQUALS prop .)
+    LESS_EQUAL      reduce using rule 18 (prop -> prop EQUALS prop .)
+    GREATER         reduce using rule 18 (prop -> prop EQUALS prop .)
+    GREATER_EQUAL   reduce using rule 18 (prop -> prop EQUALS prop .)
+    EQUALS          reduce using rule 18 (prop -> prop EQUALS prop .)
+    NOT_EQUAL       reduce using rule 18 (prop -> prop EQUALS prop .)
+    $end            reduce using rule 18 (prop -> prop EQUALS prop .)
+    RIGHT_PARENTHESIS reduce using rule 18 (prop -> prop EQUALS prop .)
+    COMMA           reduce using rule 18 (prop -> prop EQUALS prop .)
+    RIGHT_BRACKET   reduce using rule 18 (prop -> prop EQUALS prop .)
+    CON             shift and go to state 15
+    IN              shift and go to state 16
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    MULTIPLY        shift and go to state 19
+    DIVIDE          shift and go to state 20
+    INTEGER_DIV     shift and go to state 21
+    MOD             shift and go to state 22
+    EXPONENT        shift and go to state 23
+    LEFT_BRACKET    shift and go to state 31
+
+  ! CON             [ reduce using rule 18 (prop -> prop EQUALS prop .) ]
+  ! IN              [ reduce using rule 18 (prop -> prop EQUALS prop .) ]
+  ! PLUS            [ reduce using rule 18 (prop -> prop EQUALS prop .) ]
+  ! MINUS           [ reduce using rule 18 (prop -> prop EQUALS prop .) ]
+  ! MULTIPLY        [ reduce using rule 18 (prop -> prop EQUALS prop .) ]
+  ! DIVIDE          [ reduce using rule 18 (prop -> prop EQUALS prop .) ]
+  ! INTEGER_DIV     [ reduce using rule 18 (prop -> prop EQUALS prop .) ]
+  ! MOD             [ reduce using rule 18 (prop -> prop EQUALS prop .) ]
+  ! EXPONENT        [ reduce using rule 18 (prop -> prop EQUALS prop .) ]
+  ! LEFT_BRACKET    [ reduce using rule 18 (prop -> prop EQUALS prop .) ]
+  ! LESS            [ shift and go to state 24 ]
+  ! LESS_EQUAL      [ shift and go to state 25 ]
+  ! GREATER         [ shift and go to state 26 ]
+  ! GREATER_EQUAL   [ shift and go to state 27 ]
+  ! EQUALS          [ shift and go to state 28 ]
+  ! NOT_EQUAL       [ shift and go to state 29 ]
+
+    index                          shift and go to state 30
+
+state 58
+
+    (19) prop -> prop NOT_EQUAL prop .
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    LESS            reduce using rule 19 (prop -> prop NOT_EQUAL prop .)
+    LESS_EQUAL      reduce using rule 19 (prop -> prop NOT_EQUAL prop .)
+    GREATER         reduce using rule 19 (prop -> prop NOT_EQUAL prop .)
+    GREATER_EQUAL   reduce using rule 19 (prop -> prop NOT_EQUAL prop .)
+    EQUALS          reduce using rule 19 (prop -> prop NOT_EQUAL prop .)
+    NOT_EQUAL       reduce using rule 19 (prop -> prop NOT_EQUAL prop .)
+    $end            reduce using rule 19 (prop -> prop NOT_EQUAL prop .)
+    RIGHT_PARENTHESIS reduce using rule 19 (prop -> prop NOT_EQUAL prop .)
+    COMMA           reduce using rule 19 (prop -> prop NOT_EQUAL prop .)
+    RIGHT_BRACKET   reduce using rule 19 (prop -> prop NOT_EQUAL prop .)
+    CON             shift and go to state 15
+    IN              shift and go to state 16
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    MULTIPLY        shift and go to state 19
+    DIVIDE          shift and go to state 20
+    INTEGER_DIV     shift and go to state 21
+    MOD             shift and go to state 22
+    EXPONENT        shift and go to state 23
+    LEFT_BRACKET    shift and go to state 31
+
+  ! CON             [ reduce using rule 19 (prop -> prop NOT_EQUAL prop .) ]
+  ! IN              [ reduce using rule 19 (prop -> prop NOT_EQUAL prop .) ]
+  ! PLUS            [ reduce using rule 19 (prop -> prop NOT_EQUAL prop .) ]
+  ! MINUS           [ reduce using rule 19 (prop -> prop NOT_EQUAL prop .) ]
+  ! MULTIPLY        [ reduce using rule 19 (prop -> prop NOT_EQUAL prop .) ]
+  ! DIVIDE          [ reduce using rule 19 (prop -> prop NOT_EQUAL prop .) ]
+  ! INTEGER_DIV     [ reduce using rule 19 (prop -> prop NOT_EQUAL prop .) ]
+  ! MOD             [ reduce using rule 19 (prop -> prop NOT_EQUAL prop .) ]
+  ! EXPONENT        [ reduce using rule 19 (prop -> prop NOT_EQUAL prop .) ]
+  ! LEFT_BRACKET    [ reduce using rule 19 (prop -> prop NOT_EQUAL prop .) ]
+  ! LESS            [ shift and go to state 24 ]
+  ! LESS_EQUAL      [ shift and go to state 25 ]
+  ! GREATER         [ shift and go to state 26 ]
+  ! GREATER_EQUAL   [ shift and go to state 27 ]
+  ! EQUALS          [ shift and go to state 28 ]
+  ! NOT_EQUAL       [ shift and go to state 29 ]
+
+    index                          shift and go to state 30
+
+state 59
+
+    (22) index -> LEFT_BRACKET prop . RIGHT_BRACKET
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    RIGHT_BRACKET   shift and go to state 68
+    CON             shift and go to state 15
+    IN              shift and go to state 16
+    PLUS            shift and go to state 17
+    MINUS           shift and go to state 18
+    MULTIPLY        shift and go to state 19
+    DIVIDE          shift and go to state 20
+    INTEGER_DIV     shift and go to state 21
+    MOD             shift and go to state 22
+    EXPONENT        shift and go to state 23
+    LESS            shift and go to state 24
+    LESS_EQUAL      shift and go to state 25
+    GREATER         shift and go to state 26
+    GREATER_EQUAL   shift and go to state 27
+    EQUALS          shift and go to state 28
+    NOT_EQUAL       shift and go to state 29
+    LEFT_BRACKET    shift and go to state 31
+
+    index                          shift and go to state 30
+
+state 60
+
+    (3) prop -> boolean CONJUNCTION boolean .
+
+    CON             reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+    IN              reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+    PLUS            reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+    MINUS           reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+    MULTIPLY        reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+    DIVIDE          reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+    INTEGER_DIV     reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+    MOD             reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+    EXPONENT        reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+    LESS            reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+    LESS_EQUAL      reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+    GREATER         reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+    GREATER_EQUAL   reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+    EQUALS          reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+    NOT_EQUAL       reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+    LEFT_BRACKET    reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+    $end            reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+    RIGHT_PARENTHESIS reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+    COMMA           reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+    RIGHT_BRACKET   reduce using rule 3 (prop -> boolean CONJUNCTION boolean .)
+
+
+state 61
+
+    (4) prop -> boolean DISJUNCTION boolean .
+
+    CON             reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+    IN              reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+    PLUS            reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+    MINUS           reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+    MULTIPLY        reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+    DIVIDE          reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+    INTEGER_DIV     reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+    MOD             reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+    EXPONENT        reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+    LESS            reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+    LESS_EQUAL      reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+    GREATER         reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+    GREATER_EQUAL   reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+    EQUALS          reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+    NOT_EQUAL       reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+    LEFT_BRACKET    reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+    $end            reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+    RIGHT_PARENTHESIS reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+    COMMA           reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+    RIGHT_BRACKET   reduce using rule 4 (prop -> boolean DISJUNCTION boolean .)
+
+
+state 62
+
+    (20) prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .
+
+    CON             reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+    IN              reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+    PLUS            reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+    MINUS           reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+    MULTIPLY        reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+    DIVIDE          reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+    INTEGER_DIV     reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+    MOD             reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+    EXPONENT        reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+    LESS            reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+    LESS_EQUAL      reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+    GREATER         reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+    GREATER_EQUAL   reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+    EQUALS          reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+    NOT_EQUAL       reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+    LEFT_BRACKET    reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+    $end            reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+    RIGHT_PARENTHESIS reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+    COMMA           reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+    RIGHT_BRACKET   reduce using rule 20 (prop -> LEFT_PARENTHESIS prop RIGHT_PARENTHESIS .)
+
+
+state 63
+
+    (30) prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .
+
+    CON             reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+    IN              reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+    PLUS            reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+    MINUS           reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+    MULTIPLY        reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+    DIVIDE          reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+    INTEGER_DIV     reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+    MOD             reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+    EXPONENT        reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+    LESS            reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+    LESS_EQUAL      reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+    GREATER         reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+    GREATER_EQUAL   reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+    EQUALS          reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+    NOT_EQUAL       reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+    LEFT_BRACKET    reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+    $end            reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+    RIGHT_PARENTHESIS reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+    COMMA           reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+    RIGHT_BRACKET   reduce using rule 30 (prop -> LEFT_PARENTHESIS express RIGHT_PARENTHESIS .)
+
+
+state 64
+
+    (31) express -> element COMMA . expression
+    (32) express -> element COMMA .
+    (26) expression -> . value COMMA expression
+    (27) expression -> . value
+    (28) value -> . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    RIGHT_PARENTHESIS reduce using rule 32 (express -> element COMMA .)
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    expression                     shift and go to state 69
+    value                          shift and go to state 42
+    prop                           shift and go to state 43
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 65
+
+    (29) prop -> TUPLE_IND Number prop .
+    (5) prop -> prop . CON prop
+    (6) prop -> prop . IN prop
+    (7) prop -> prop . PLUS prop
+    (8) prop -> prop . MINUS prop
+    (9) prop -> prop . MULTIPLY prop
+    (10) prop -> prop . DIVIDE prop
+    (11) prop -> prop . INTEGER_DIV prop
+    (12) prop -> prop . MOD prop
+    (13) prop -> prop . EXPONENT prop
+    (14) prop -> prop . LESS prop
+    (15) prop -> prop . LESS_EQUAL prop
+    (16) prop -> prop . GREATER prop
+    (17) prop -> prop . GREATER_EQUAL prop
+    (18) prop -> prop . EQUALS prop
+    (19) prop -> prop . NOT_EQUAL prop
+    (21) prop -> prop . index
+    (22) index -> . LEFT_BRACKET prop RIGHT_BRACKET
+
+    CON             reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+    IN              reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+    PLUS            reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+    MINUS           reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+    MULTIPLY        reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+    DIVIDE          reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+    INTEGER_DIV     reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+    MOD             reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+    EXPONENT        reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+    LESS            reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+    LESS_EQUAL      reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+    GREATER         reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+    GREATER_EQUAL   reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+    EQUALS          reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+    NOT_EQUAL       reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+    LEFT_BRACKET    reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+    $end            reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+    RIGHT_PARENTHESIS reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+    COMMA           reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+    RIGHT_BRACKET   reduce using rule 29 (prop -> TUPLE_IND Number prop .)
+
+  ! CON             [ shift and go to state 15 ]
+  ! IN              [ shift and go to state 16 ]
+  ! PLUS            [ shift and go to state 17 ]
+  ! MINUS           [ shift and go to state 18 ]
+  ! MULTIPLY        [ shift and go to state 19 ]
+  ! DIVIDE          [ shift and go to state 20 ]
+  ! INTEGER_DIV     [ shift and go to state 21 ]
+  ! MOD             [ shift and go to state 22 ]
+  ! EXPONENT        [ shift and go to state 23 ]
+  ! LESS            [ shift and go to state 24 ]
+  ! LESS_EQUAL      [ shift and go to state 25 ]
+  ! GREATER         [ shift and go to state 26 ]
+  ! GREATER_EQUAL   [ shift and go to state 27 ]
+  ! EQUALS          [ shift and go to state 28 ]
+  ! NOT_EQUAL       [ shift and go to state 29 ]
+  ! LEFT_BRACKET    [ shift and go to state 31 ]
+
+    index                          shift and go to state 30
+
+state 66
+
+    (24) list -> LEFT_BRACKET expression RIGHT_BRACKET .
+
+    CON             reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+    IN              reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+    PLUS            reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+    MINUS           reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+    MULTIPLY        reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+    DIVIDE          reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+    INTEGER_DIV     reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+    MOD             reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+    EXPONENT        reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+    LESS            reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+    LESS_EQUAL      reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+    GREATER         reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+    GREATER_EQUAL   reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+    EQUALS          reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+    NOT_EQUAL       reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+    LEFT_BRACKET    reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+    $end            reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+    RIGHT_PARENTHESIS reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+    COMMA           reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+    RIGHT_BRACKET   reduce using rule 24 (list -> LEFT_BRACKET expression RIGHT_BRACKET .)
+
+
+state 67
+
+    (26) expression -> value COMMA . expression
+    (26) expression -> . value COMMA expression
+    (27) expression -> . value
+    (28) value -> . prop
+    (1) prop -> . MINUS prop
+    (2) prop -> . NEGATION boolean
+    (3) prop -> . boolean CONJUNCTION boolean
+    (4) prop -> . boolean DISJUNCTION boolean
+    (5) prop -> . prop CON prop
+    (6) prop -> . prop IN prop
+    (7) prop -> . prop PLUS prop
+    (8) prop -> . prop MINUS prop
+    (9) prop -> . prop MULTIPLY prop
+    (10) prop -> . prop DIVIDE prop
+    (11) prop -> . prop INTEGER_DIV prop
+    (12) prop -> . prop MOD prop
+    (13) prop -> . prop EXPONENT prop
+    (14) prop -> . prop LESS prop
+    (15) prop -> . prop LESS_EQUAL prop
+    (16) prop -> . prop GREATER prop
+    (17) prop -> . prop GREATER_EQUAL prop
+    (18) prop -> . prop EQUALS prop
+    (19) prop -> . prop NOT_EQUAL prop
+    (20) prop -> . LEFT_PARENTHESIS prop RIGHT_PARENTHESIS
+    (21) prop -> . prop index
+    (23) prop -> . list
+    (29) prop -> . TUPLE_IND Number prop
+    (30) prop -> . LEFT_PARENTHESIS express RIGHT_PARENTHESIS
+    (34) prop -> . STRING
+    (35) prop -> . Number
+    (38) prop -> . boolean
+    (39) boolean -> . TRUE
+    (40) boolean -> . FALSE
+    (24) list -> . LEFT_BRACKET expression RIGHT_BRACKET
+    (25) list -> . LEFT_BRACKET RIGHT_BRACKET
+    (36) Number -> . REAL
+    (37) Number -> . INTEGER
+
+    MINUS           shift and go to state 2
+    NEGATION        shift and go to state 3
+    LEFT_PARENTHESIS shift and go to state 5
+    TUPLE_IND       shift and go to state 7
+    STRING          shift and go to state 9
+    TRUE            shift and go to state 10
+    FALSE           shift and go to state 11
+    LEFT_BRACKET    shift and go to state 12
+    REAL            shift and go to state 13
+    INTEGER         shift and go to state 14
+
+    value                          shift and go to state 42
+    expression                     shift and go to state 70
+    prop                           shift and go to state 43
+    boolean                        shift and go to state 4
+    list                           shift and go to state 6
+    Number                         shift and go to state 8
+
+state 68
+
+    (22) index -> LEFT_BRACKET prop RIGHT_BRACKET .
+
+    CON             reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+    IN              reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+    PLUS            reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+    MINUS           reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+    MULTIPLY        reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+    DIVIDE          reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+    INTEGER_DIV     reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+    MOD             reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+    EXPONENT        reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+    LESS            reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+    LESS_EQUAL      reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+    GREATER         reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+    GREATER_EQUAL   reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+    EQUALS          reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+    NOT_EQUAL       reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+    LEFT_BRACKET    reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+    $end            reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+    RIGHT_PARENTHESIS reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+    COMMA           reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+    RIGHT_BRACKET   reduce using rule 22 (index -> LEFT_BRACKET prop RIGHT_BRACKET .)
+
+
+state 69
+
+    (31) express -> element COMMA expression .
+
+    RIGHT_PARENTHESIS reduce using rule 31 (express -> element COMMA expression .)
+
+
+state 70
+
+    (26) expression -> value COMMA expression .
+
+    RIGHT_BRACKET   reduce using rule 26 (expression -> value COMMA expression .)
+    RIGHT_PARENTHESIS reduce using rule 26 (expression -> value COMMA expression .)
+
