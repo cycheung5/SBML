@@ -1,7 +1,7 @@
 # SBML
 sbml is a hybrid programming language that combines the features found in Python and SML.  It is written in PLY (Python Lex and Yacc)
 
-#How To Run
+# How To Run
 Need:
 Python 3
 PLY
