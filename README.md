@@ -111,11 +111,10 @@ Print: a print statement consists of the "print" keyword, a left parenthesis, an
 Conditional Statements: <br />
 A. If Statements: Consist of a keyword "if", a left parenthesis, an expression, a right parenthesis, and a block statement as the <br />
 body of the If statement. When the If statement executes, if the expression evaluates to True, then the block statement composing the body is executed. <br />
-B. If-Else Statements: Consist of a keyword "if", a left parenthesis, an expression, a right parenthesis, a block statement as the body of the If clause, the <br />
-keyword "else", and a block statement as the body of the Else clause. When the IF-Else statement executes, if the expression is True, then execute the block statement that is the body of the If clause. Otherwise, execute the block statement that is the body of the Else clause.
+B. If-Else Statements: Consist of a keyword "if", a left parenthesis, an expression, a right parenthesis, a block statement as the body of the If clause, the keyword "else", and a block statement as the body of the Else clause. When the IF-Else statement executes, if the expression is True, then execute the block statement that is the body of the If clause. Otherwise, execute the block statement that is the body of the Else clause.
 
  Loop Statements: <br />
-A. While Loops: A While statement consists of the keyword "while", a left parenthesis, an expression, a right parenthesis, and a block statement that is the body <br />
-of  the While statement. Executing the while statement begins by evaluating the condition expression for its value. If the expression evaluates to False, then <br />
- the  While statement terminates. Otherwise, execute the block of statements that compose the body of the While statement, and then repeat the execution of the <br />
- While  statement from the evaluation of the condition expression.
+While Loops: A While statement consists of the keyword "while", a left parenthesis, an expression, a right parenthesis, and a block statement that is the body <br />
+of  the While statement.
+
+Executing the while statement begins by evaluating the condition expression for its value. If the expression evaluates to False, then the  While statement terminates. Otherwise, execute the block of statements that compose the body of the While statement, and then repeat the execution of the While  statement from the evaluation of the condition expression.
