@@ -6,12 +6,12 @@ Need: <br />
 Python 3 <br />
 PLY
 
-On the command line: <br />
+On the command line run <br />
 python sbml.py <input_filename>
 
 The input_filename will hold the input program.  This input program can contain multiple function definitions followed by one executed main block.
 The source code will take the input file and parse the input expression.  Semantic analysis and expression evaluation are done through recursive
-operation on the content.
+operation on the content.  A stack is implemented to create the scoping for local variables inside recursive function calls.  Call by value is used to pass arguments to parameters
 
 # SBML Datatypes:
 | Datatype | Description | Example |
@@ -117,3 +117,14 @@ B. If-Else Statements: Consist of a keyword "if", a left parenthesis, an express
 While Loops: A While statement consists of the keyword "while", a left parenthesis, an expression, a right parenthesis, and a block statement that is the body of  the While statement.
 
 Executing the while statement begins by evaluating the condition expression for its value. If the expression evaluates to False, then the  While statement terminates. Otherwise, execute the block of statements that compose the body of the While statement, and then repeat the execution of the While  statement from the evaluation of the condition expression.
+
+# Function
+
+Function: Begins with the keyword "fun" followed by the name of the function, a left parenthesis, variables representing formal parameters separated by commas, a right
+parenthesis, an equal sign, a block, and then an expression.
+
+When the function is called, the block is executed first. Then the expression is evaluated and the result of the expression evaluation is returned to the caller.
+
+# Function Call
+
+A function call is an expression. The function name is followed by a left parenthesis, and then argument expressions, followed by a right parenthesis. The number of arguments passed to the call must match the number of parameters in the function definition.
