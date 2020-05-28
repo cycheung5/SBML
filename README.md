@@ -32,3 +32,29 @@ Boolean: True, False <br />
 String: A string literal begins with a single or double quote, followed by zero or more non-quote characters, and ends with a matching quote. The value of the string literal does not include the starting and ending quotes. <br />
 
 List: A list literal is composed by a left square bracket, followed by a comma-separated sequence of zero or more expressions, followed by a right square bracket.
+
+# Operators
+| Operator | Description |
+| --- | --- |
+|  ( expression ) | A parenthesized expression |
+|  ( expression1, expression2, … ) | Tuple constructor. A singleton tuple can be constructed by including a comma after the expression. |
+|  #i(tuple) | returns the argument at index i in the tuple. Indices start at 1. |
+| a[b] | Indexing Operation. b can be any expression. |
+|  a ** b | Exponentiation. base a raised to the power b. |
+|  a * b | Multiplication. Overloaded for integers and reals. |
+|  a / b | Division. Overloaded for integers and reals, but result is always a real value. |
+|  a div b  | Integer Division. Returns just the quotient. a and b are integers. |
+|  a mod b | Divides a by b and returns just the remainder. a and b are integers. |
+|  a + b | Addition. Overloaded for integers, reals, strings, and lists. |
+|  a – b |  Subtraction. Overloaded for integers and reals. |
+|  a in b | Membership. Evaluates to True if it finds the value of a inside the string or list represented by b. |
+|  a::b  | Cons. Adds operand a to the front of the list referred to by operand b. |
+|  not a | Boolean negation. |
+|  a andalso b  |  Boolean Conjunction (AND) |
+|  a orelse b  |  Boolean Disjunction (OR) |
+|  a < b |  Less than. Comparison. |
+|  a <= b  | Less than or equal to. Comparison. |
+|   a == b  | Equal to. Comparison. |
+|  a <> b  |  Not equal to. Comparison. |
+|  a >= b  |  Greater than or equal to. Comparison. |
+|  a > b  | Greater than. Comparison. |
