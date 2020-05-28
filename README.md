@@ -6,7 +6,7 @@ Need: <br />
 Python 3 <br />
 PLY
 
-On the command line run:
+On the command line run: <br />
 python sbml.py <input_filename>
 
 The input_filename will hold the input program.  This input program can contain multiple function definitions followed by one executed main block.
