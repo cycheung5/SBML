@@ -20,9 +20,11 @@ operation on the content.
 | Boolean | True and False | True, False |
 | Strings | Sequences of characters enclosed within matching single or double quotes in a single line. |  "Hello World!", "867-5309" |
 | List |  Finite, ordered sequence of elements separated by commas and enclosed within matching square brackets. Elements of the list need not be of the same type. | ["a", "b"], [1, 2], [307, "307", 304+3]  |
-| Tuple | Finite, ordered sequence of elements separated by commas and enclosed within matching parentheses. Elements of the tuple need not be of the same type.  | Description |
+| Tuple | Finite, ordered sequence of elements separated by commas and enclosed within matching parentheses. Elements of the tuple need not be of the same type.  | #3(4, 3, 2, 1) |
 
-
-
-
-    
+# SBML Literal Description
+Integer: Positive (no sign) or negative (unary -) whole numbers in base-10 representation (decimal representation). An integer literal is one or more digits, 0-9. <br />
+Real: A real value is represented by 0 or more digits (0-9), followed by a decimal point, ".", followed by 0 or more digits (0-9), except that a decimal point by itself with no leading or trailing digit is not a real. A real can also contain exponents as in scientific  notation. In this case, a real value, as defined above, is followed by an "e" character and then a positive or negative integer, as defined above. <br />
+Boolean: True, False <br />
+String: A string literal begins with a single or double quote, followed by zero or more non-quote characters, and ends with a matching quote. The value of the string literal does not include the starting and ending quotes. <br />
+List: A list literal is composed by a left square bracket, followed by a comma-separated sequence of zero or more expressions, followed by a right square bracket.
