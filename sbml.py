@@ -316,8 +316,8 @@ class Multiply(Node):
         super().__init__()
         self.left = left
         self.right = right
-        self.left.parent = self
-        self.right.parent = self
+       # self.left.parent = self
+       # self.right.parent = self
 
     def eval(self):
         leftchild = self.left.eval()
@@ -540,10 +540,22 @@ class Assign(Node):
         self.right.parent = self
 
     def eval(self):
+        # Need to take care of output
         var = self.left
         val = self.right.eval()
-        variableTable[var] = val
-        return variableTable[var]
+        localscope = globaltable[0]
+        globalscope = globaltable[-1]
+        if var in localscope:
+            localscope[var] = val
+            globaltable[0] = localscope
+        elif var in globalscope:
+                globalscope[var] = val
+                globaltable[-1] = globalscope
+        else:
+             localscope[var] = val
+             globaltable[0] = localscope
+        return val
+
 
 # Assign Index, indicies in list
 class AssignIndex(Node):
@@ -579,12 +591,74 @@ class AssignIndex(Node):
         var = self.value
         ind = self.left
         assigned = self.right.eval()
-        variable = variableTable[var]
+        # Check if local scope
+        localscope = globaltable[0]
+        globalscope = globaltable[-1]
+        localcheck = 0
+        globalcheck = 0
+        if var in localscope:
+            variable = localscope[var]
+            localcheck = 1
+        elif var in globalscope:
+            variable = globalscope[var]
+            globalcheck = 1
+        else:
+            raise SbmlError("Semantic Error")
         if type(variable) is not list:
             raise SbmlError("Semantic Error")
         else:
             self.getindex(variable, ind, assigned) #update that index
-            variableTable[var] = variable
+            if localcheck == 1:
+                localscope[var] = variable
+                globaltable[0] = localscope
+            elif globalcheck == 1:
+                globalscope[var] = variable
+                globaltable[-1] = globalscope
+            else:
+                raise SbmlError("Semantic Error")
+
+# Function
+class Function(Node):
+    def __init__(self, name, argument, block, expression):
+        super().__init__()
+        self.name = name
+        self.argument = argument
+        self.block = block
+        self.expression = expression
+
+    def eval(self):
+        funcname = self.name
+        # Add function to function table
+        functionTable[funcname] = self
+
+# Function Call
+class Function_Call(Node):
+    def __init__(self, name, argument):
+        super().__init__()
+        self.name = name
+        self.argument = argument
+
+    def eval(self):
+        funcname = self.name
+        funcargument = self.argument
+        # Function not exist
+        if funcname not in functionTable:
+            raise SbmlError("Semantic Error")
+        # Function exist, check arguments
+        funcdef = functionTable[funcname]
+        if len(funcargument) != len(funcdef.argument):
+            raise SbmlError("Semantic Error")
+        # Put function in global list
+        localfunc = {}
+        for i in range(0, len(funcargument)):
+            localfunc[funcdef.argument[i].value] = funcargument[i].eval()
+        globaltable.insert(0, localfunc)
+        # Do rest of function
+        funcdef.block.eval()
+        outpt = funcdef.expression.eval()
+        globaltable.pop(0)
+        return outpt
+
 
 # True
 class AST_True(Node):
@@ -643,10 +717,16 @@ class Variable(Node):
 
     def eval(self):
         var = self.value
-        if var in variableTable:
-            return variableTable[var]
+        localscope = globaltable[0]
+        if var in localscope:
+            return localscope[var]
         else:
-            raise SbmlError("Semantic Error")
+            # check global scope
+            globalscope = globaltable[-1]
+            if var in globalscope:
+                return globalscope[var]
+            else:
+                raise SbmlError("Semantic Error")
 
 
 reserved = {
@@ -661,7 +741,8 @@ reserved = {
     'print': 'PRINT',
     'if': 'IF',
     'else': 'ELSE',
-    'while': 'WHILE'
+    'while': 'WHILE',
+    'fun': 'FUN'
 }
 
 # Tokens
@@ -772,6 +853,8 @@ def tokenize(inp):
 
 # Parsing
 variableTable = {}
+functionTable = {}
+globaltable = [{}]
 
 precedence = (
     ('left', 'DISJUNCTION'),
@@ -791,8 +874,13 @@ precedence = (
 )
 
 def p_start(p):
-    'start : block'
-    p[0] = p[1]
+    '''start : function_list block
+             | block'''
+    if len(p) == 2:
+        p[0] = [p[1]]
+    else:
+        p[0] = p[1] + [p[2]]
+
 
 def p_prop_conjunction(p):
     'prop : prop CONJUNCTION prop'
@@ -986,6 +1074,7 @@ def p_statement(p):
                 | while_statement
                 | assignment_statement
                 | if_statement
+                | function_call
                 | block'''
 
     p[0] = p[1]
@@ -1021,6 +1110,49 @@ def p_index_list(p):
         p[0] = [p[1]]
     else:
         p[0] = [p[1]] + p[2]
+
+
+def p_function_call(p):
+    'function_call : VARIABLE argument'
+    p[0] = Function_Call(p[1], p[2])
+
+def p_function_prop(p):
+    'prop : VARIABLE argument'
+    p[0] = Function_Call(p[1], p[2])
+
+
+def p_functionlist(p):
+    '''function_list : func function_list
+                    | func'''
+    if len(p) == 2:
+        p[0] = [p[1]]
+    else:
+        p[0] = ([p[1]] + p[2])
+
+
+def p_function_def(p):
+    'func : FUN VARIABLE argument ASSIGN block prop SEMICOLON'
+    p[0] = Function(p[2], p[3], p[5], p[6])
+
+def p_function_argument(p):
+    '''argument : LEFT_PARENTHESIS args RIGHT_PARENTHESIS
+                | LEFT_PARENTHESIS RIGHT_PARENTHESIS'''
+    if len(p) == 3:
+        p[0] = []
+    else:
+        p[0] = p[2]
+
+def p_prop_args(p):
+    '''args : arg COMMA args
+            | arg'''
+    if len(p) == 2:
+        p[0] = p[1]
+    else:
+        p[0] = (p[1] + p[3])
+
+def p_prop_arg(p):
+    'arg : prop'
+    p[0] = [p[1]]
 
 def p_number(p):
     'prop : Number'
@@ -1065,10 +1197,13 @@ def main():
         result = parse(fline)
         # print(result)
         if result is not None:
-            result.eval()
-            #print("Evaluation:", result.eval())
+            for i in range(0, len(result)):
+                result[i].eval()
+            #result.eval()
+            # print("Evaluation:", result.eval())
     except SbmlError as e:
         print(e)
+
 
 
 if __name__ == "__main__":
