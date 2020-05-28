@@ -60,9 +60,7 @@ List: A list literal is composed by a left square bracket, followed by a comma-s
 |  a > b  | Greater than. Comparison. |
 
 # Operator Precedence (Lowest to Highest) :
-All operators are left-associative, except for exponentiation  (** ) and cons (::), which are right-associative
-
-Operators on the same line have the same precedence.
+All operators are left-associative, except for exponentiation  (** ) and cons (::), which are right-associative.  Operators on the same line have the same precedence.
 
 orelse Boolean Disjunction <br />
 andalso Boolean Conjunction <br />
@@ -75,3 +73,20 @@ not Boolean Negation <br />
  a[b] Indexing <br />
  #i(tuple) Tuple Indexing. (exp1, exp2,...) Tuple Creation <br />
  (exp) Parenthetical Expression
+
+# Operator Semantics :
+
+ Indexing: Operand a must be either a string or a list.  Operand b must be an integer. If a is a string,  then return the b-th character as a string. If a is a list, then return the b-th element as an instance of whatever type it is. The index is 0-based. If the index is out of bounds, then this is a semantic error.
+
+ Addition: Operands must either both be numbers, or both be strings, or both be lists. If they are integers or reals, then addition with standard (Python)
+  semantics is performed. If a and b are both strings, then string concatenation is performed. If a and b are both lists, then list concatenation is performed.
+
+ Subtraction: Operands must both be integers or reals. Performed using standard subtraction semantics.
+
+ Multiplication: Operands must both be integers or reals. Performed using standard multiplication semantics.
+
+ Division: Operands must both be integers or reals. Operand b cannot be 0. Performed using standard division semantics.
+
+ Booleans: Operands for Boolean operations (not, andalso, orelse) must be Boolean values.
+
+ Comparisons: Operands must either both be numbers or both be strings. Comparison of numbers (integers and strings) should follow standard semantics. Comparison of strings should return True if comparison is true and False if comparison is False. 
