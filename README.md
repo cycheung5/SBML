@@ -58,3 +58,20 @@ List: A list literal is composed by a left square bracket, followed by a comma-s
 |  a <> b  |  Not equal to. Comparison. |
 |  a >= b  |  Greater than or equal to. Comparison. |
 |  a > b  | Greater than. Comparison. |
+
+# Operator Precedence (Lowest to Highest) :
+All operators are left-associative, except for exponentiation  (** ) and cons (::), which are right-associative
+
+Operators on the same line have the same precedence.
+
+orelse Boolean Disjunction <br />
+andalso Boolean Conjunction <br />
+not Boolean Negation <br />
+ <, <=, ==, <>, >=, > Comparison Operators (for  numbers and strings) <br />
+ h::t Cons operator <br />
+ in Membership test <br />
+ +, - Addition and Subtraction  (Overloaded for numbers, strings, lists) <br />
+ \*, /, div, mod Multiplication, Division, Integer Division, Modulus ** Exponentiation <br />
+ a[b] Indexing <br />
+ #i(tuple) Tuple Indexing. (exp1, exp2,...) Tuple Creation <br />
+ (exp) Parenthetical Expression
