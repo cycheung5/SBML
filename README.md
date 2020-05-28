@@ -59,7 +59,7 @@ List: A list literal is composed by a left square bracket, followed by a comma-s
 |  a >= b  |  Greater than or equal to. Comparison. |
 |  a > b  | Greater than. Comparison. |
 
-# Operator Precedence (Lowest to Highest) :
+# Operator Precedence (Lowest to Highest)
 All operators are left-associative, except for exponentiation  (** ) and cons (::), which are right-associative.  Operators on the same line have the same precedence.
 
 orelse Boolean Disjunction <br />
@@ -74,7 +74,7 @@ not Boolean Negation <br />
  #i(tuple) Tuple Indexing. (exp1, exp2,...) Tuple Creation <br />
  (exp) Parenthetical Expression
 
-# Operator Semantics :
+# Operator Semantics
 
  Indexing: Operand a must be either a string or a list.  Operand b must be an integer. If a is a string,  then return the b-th character as a string. If a is a list, then return the b-th element as an instance of whatever type it is. The index is 0-based. If the index is out of bounds, then this is a semantic error.
 
@@ -89,4 +89,33 @@ not Boolean Negation <br />
 
  Booleans: Operands for Boolean operations (not, andalso, orelse) must be Boolean values.
 
- Comparisons: Operands must either both be numbers or both be strings. Comparison of numbers (integers and strings) should follow standard semantics. Comparison of strings should return True if comparison is true and False if comparison is False. 
+ Comparisons: Operands must either both be numbers or both be strings. Comparison of numbers (integers and strings) should follow standard semantics. Comparison of strings should return True if comparison is true and False if comparison is False.
+
+
+# Variables and Assignment
+
+Variable names begin with an ASCII character, which may be followed by zero or more ASCII characters, digits, or underscores. <br />
+Support for assignment to variables are included such as "x = 1;" and assignment to index list values such as "array = [1,2,3];" .  Variables can also be used in expressions.  For instance, if x is assigned to 1, then "print(x);" will print 1.
+
+If the variable has had a value assigned to it and the variable is evaluated, then the value is returned.  Otherwise, a "Semantic Error" is thrown and the program exits.  When an indexed list variable is used in an expression, then both the list and the index are evaluated to their value, and
+ then the indexed list expression is evaluated. If the variable is not a list (or a string), or the index is not an integer, then a Semantic Error is thrown. If the index is outside the bounds of the list, then a Semantic Error is thrown.
+
+# Statement Types
+
+ Block: A block statement consists of zero or more statements enclosed in curly-braces, "{…}". When the block executes, each of the statements is executed in sequential order.
+
+Assignment: an assignment statement consists of an expression, an equals sign, an expression, and a semicolon, "exp1 = exp2;". When the assignment statement executes the lefthand side expression is assigned the value evaluated for the right-hand side expression.
+
+Print: a print statement consists of the "print" keyword, a left parenthesis, an expression, a right parenthesis, and then a semicolon. When the statement executes, the expression is evaluated for its value. The output displayed should be the same as that produced by Python for that value.
+
+Conditional Statements: <br />
+A. If Statements: Consist of a keyword "if", a left parenthesis, an expression, a right parenthesis, and a block statement as the <br />
+body of the If statement. When the If statement executes, if the expression evaluates to True, then the block statement composing the body is executed. <br />
+B. If-Else Statements: Consist of a keyword "if", a left parenthesis, an expression, a right parenthesis, a block statement as the body of the If clause, the <br />
+keyword "else", and a block statement as the body of the Else clause. When the IF-Else statement executes, if the expression is True, then execute the block statement that is the body of the If clause. Otherwise, execute the block statement that is the body of the Else clause.
+
+ Loop Statements: <br />
+A. While Loops: A While statement consists of the keyword "while", a left parenthesis, an expression, a right parenthesis, and a block statement that is the body <br />
+of  the While statement. Executing the while statement begins by evaluating the condition expression for its value. If the expression evaluates to False, then <br />
+ the  While statement terminates. Otherwise, execute the block of statements that compose the body of the While statement, and then repeat the execution of the <br />
+ While  statement from the evaluation of the condition expression.
